@@ -1,0 +1,32 @@
+'use strict';
+
+var StorageService = (function() {
+  function StorageService() {}
+
+  StorageService.prototype.set = function(key, value) {
+    var json;
+    json = value === void 0 ? null : JSON.stringify(value);
+    return sessionStorage.setItem(key, json);
+  };
+
+  StorageService.prototype.get = function(key) {
+    return JSON.parse(sessionStorage.getItem(key));
+  };
+
+  StorageService.prototype.username = function(value) {
+    if (value == null) {
+      value = null;
+    }
+    if (value === null) {
+      return this.get('username');
+    } else {
+      return this.set('username', value);
+    }
+  };
+
+  /*@ngInject*/
+  angular.module('infer').service('storageService', StorageService);
+
+  return StorageService;
+
+})();

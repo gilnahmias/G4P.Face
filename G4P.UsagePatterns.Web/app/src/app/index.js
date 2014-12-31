@@ -7,9 +7,17 @@ angular.module('infer', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngR
     templateUrl: 'app/main/main.html',
     controller: 'MainCtrl'
   })
-  .when('/', {
+  .when('/testee', {
     templateUrl: 'app/testee/testee.html',
     controller: 'TesteeCtrl'
+  })
+  .when('/', {
+    templateUrl: 'app/testee/username/username.html',
+    controller: 'TesteeUsernameCtrl'
+  })  
+  .when('/example', {
+    templateUrl: 'app/testee/exampleTest/exampleTest.html',
+    controller: 'TesteeExampleTestCtrl'
   })
   .otherwise({
     redirectTo: '/'
