@@ -88,36 +88,38 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\dist\404.html" />
-    <Content Include="app\dist\assets\images\angular.png" />
-    <Content Include="app\dist\assets\images\bootstrap.png" />
-    <Content Include="app\dist\assets\images\browsersync.png" />
-    <Content Include="app\dist\assets\images\gulp.png" />
-    <Content Include="app\dist\assets\images\jasmine.png" />
-    <Content Include="app\dist\assets\images\jquery.jpg" />
-    <Content Include="app\dist\assets\images\karma.png" />
-    <Content Include="app\dist\assets\images\less.png" />
-    <Content Include="app\dist\assets\images\o_ce646cd62c98e6b7-0.jpg" />
-    <Content Include="app\dist\assets\images\o_ce646cd62c98e6b7-1.jpg" />
-    <Content Include="app\dist\assets\images\o_ce646cd62c98e6b7-2.jpg" />
-    <Content Include="app\dist\assets\images\o_ce646cd62c98e6b7-3.jpg" />
-    <Content Include="app\dist\assets\images\o_ce646cd62c98e6b7-4.jpg" />
-    <Content Include="app\dist\assets\images\o_ce646cd62c98e6b7-5.jpg" />
-    <Content Include="app\dist\assets\images\press-cartoonizer-animated-brad.gif" />
-    <Content Include="app\dist\assets\images\protractor.png" />
-    <Content Include="app\dist\assets\images\ui-bootstrap.png" />
-    <Content Include="app\dist\assets\images\yeoman.png" />
-    <Content Include="app\dist\favicon.ico" />
-    <Content Include="app\dist\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="app\dist\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="app\dist\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="app\dist\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="app\dist\index.html" />
-    <Content Include="app\dist\scripts\app-f50fff37.js" />
-    <Content Include="app\dist\scripts\modernizr-c1ff1650.js" />
-    <Content Include="app\dist\scripts\vendor-b65a2a62.js" />
-    <Content Include="app\dist\styles\app-41e8a169.css" />
-    <Content Include="app\dist\styles\vendor-dfb3e5a9.css" />
+    <Content Include="dist\404.html" />
+    <Content Include="dist\assets\images\angular.png" />
+    <Content Include="dist\assets\images\bootstrap.png" />
+    <Content Include="dist\assets\images\browsersync.png" />
+    <Content Include="dist\assets\images\gulp.png" />
+    <Content Include="dist\assets\images\jasmine.png" />
+    <Content Include="dist\assets\images\jquery.jpg" />
+    <Content Include="dist\assets\images\karma.png" />
+    <Content Include="dist\assets\images\less.png" />
+    <Content Include="dist\assets\images\o_ce646cd62c98e6b7-0.jpg" />
+    <Content Include="dist\assets\images\o_ce646cd62c98e6b7-1.jpg" />
+    <Content Include="dist\assets\images\o_ce646cd62c98e6b7-2.jpg" />
+    <Content Include="dist\assets\images\o_ce646cd62c98e6b7-3.jpg" />
+    <Content Include="dist\assets\images\o_ce646cd62c98e6b7-4.jpg" />
+    <Content Include="dist\assets\images\o_ce646cd62c98e6b7-5.jpg" />
+    <Content Include="dist\assets\images\press-cartoonizer-animated-brad.gif" />
+    <Content Include="dist\assets\images\protractor.png" />
+    <Content Include="dist\assets\images\ui-bootstrap.png" />
+    <Content Include="dist\assets\images\yeoman.png" />
+    <Content Include="dist\favicon.ico" />
+    <Content Include="dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="dist\index.html" />
+    <Content Include="dist\scripts\app-33c376fa.js" />
+    <Content Include="dist\scripts\app-5178ed96.js" />
+    <Content Include="dist\scripts\modernizr-c1ff1650.js" />
+    <Content Include="dist\scripts\vendor-b65a2a62.js" />
+    <Content Include="dist\styles\app-41e8a169.css" />
+    <Content Include="dist\styles\app-ebb18bd0.css" />
+    <Content Include="dist\styles\vendor-dfb3e5a9.css" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\g4p-face.pubxml" />
     <None Include="Web.Debug.config">
@@ -135,7 +137,9 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="app\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
