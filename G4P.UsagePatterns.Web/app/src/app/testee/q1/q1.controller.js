@@ -1,55 +1,56 @@
 'use strict';
 
 angular.module('infer')
-.controller('TesteeExampleTestCtrl', function ($scope, storageService, $timeout, $q, $log, kcSleep, $document){
+.controller('Q1Ctrl', function ($scope, storageService, $timeout, $q, $log, kcSleep, $document, performance){
 
   $scope.username = storageService.get('username');
 
   $scope.images = {
-  			// stolen from http://pho.to/press/cartoon-face.php
-  			static: "assets/images/o_ce646cd62c98e6b7-0.jpg",
-  			dynamic: "assets/images/press-cartoonizer-animated-brad.gif"
-  		};
+        // stolen from http://pho.to/press/cartoon-face.php
+        static: "assets/images/o_ce646cd62c98e6b7-0.jpg",
+        dynamic: "assets/images/press-cartoonizer-animated-brad.gif"
+      };
 
-  		$scope.keys = {
-  			'i': 73,
-  			'e': 69
-  		};
+      $scope.keys = {
+        'i': 73,
+        'e': 69
+      };
 
       $scope.testStatus = 'todo';
       $scope.testIsDone = function(){
         return 'done' === $scope.testStatus;
       };
-  		$scope.correctAnswer = 'smile';
+      $scope.correctAnswer = 'smile';
 
-  		$scope.image = $scope.images.static;
+      $scope.image = $scope.images.static;
 
-  		$scope.readyToTryButton = "Ready to try?";
-  		$scope.onReadyToTryButton = function(){
-  			$q(function(resolve){ resolve(); })
-  			.then(function(){
-          $scope.readyToTryButton = 3;
+      $scope.startButton = "Start";
+      $scope.onStartButtonClicked = function(){
+        $q(function(resolve){ resolve(); })
+        .then(function(){
+          $scope.startButton = 3;
         })
-  			.then(kcSleep(1000))
-  			.then(function(){
-          $scope.readyToTryButton = 2;
+        .then(kcSleep(1000))
+        .then(function(){
+          $scope.startButton = 2;
         })
-  			.then(kcSleep(1000))
-  			.then(function(){
-          $scope.readyToTryButton = 1;
+        .then(kcSleep(1000))
+        .then(function(){
+          $scope.startButton = 1;
         })
-  			.then(kcSleep(1000))
-  			.then(function(){
-          $scope.readyToTryButton = "Go";
-          $scope.disableReadToTry = true;
+        .then(kcSleep(1000))
+        .then(function(){
+          $scope.startButton = "Go";
+          $scope.disableStartButton = true;
 
           $scope.testStatus = 'active';
           $scope.startMorph();
         });
-  		};
+      };
 
-  		$scope.startMorph = function(){
+      $scope.startMorph = function(){
        $scope.image = $scope.images.dynamic;
+       $scope.startMorphAt = performance.now();
      };
 
      $scope.onEnterSubmitName = function (){
@@ -71,14 +72,18 @@ angular.module('infer')
 
   if (key === $scope.keys.e){
     ePressed();
-    $scope.testStatus = 'done';
+    endTest()
   } else
   if (key === $scope.keys.i){
-    iPressed();
-    $scope.testStatus = 'done';
+    iPressed();    
+    endTest();
   } 
+ 
+};
 
-  
+var endTest = function(){
+  $scope.endMorphAt = performance.now();
+  $scope.testStatus = 'done';
 };
 
 $document.on('keyup', function(e){
@@ -121,9 +126,12 @@ $scope.resultMessage = function(){
     return;
   }
 
+  var ms = $scope.endMorphAt - $scope.startMorphAt,
+      timingMessage = "it took you " + ms + " milliseconds";
+
   return $scope.result() 
-  ? "Correct! Brad was smiling! Now let's move on to the real test..."
-  : "Oops! Brad was smiling... Try again in the real test!";
+  ? "Correct! Brad was smiling! " + timingMessage
+  : "Oops! Brad was smiling..." + timingMessage
 };
 
 });

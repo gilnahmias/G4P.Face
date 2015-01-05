@@ -19,6 +19,10 @@ angular.module('infer', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngR
     templateUrl: 'app/testee/exampleTest/exampleTest.html',
     controller: 'TesteeExampleTestCtrl'
   })
+  .when('/q1', {
+    templateUrl: 'app/testee/q1/q1.html',
+    controller: 'Q1Ctrl'
+  })
   .otherwise({
     redirectTo: '/'
   });
@@ -40,5 +44,6 @@ angular.module('infer', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngR
       scope.$apply(attrs.onKeyup);
     });
   };
-});
+})
+.value('performance', performance);
 ;
