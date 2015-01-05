@@ -8,7 +8,7 @@
 				<div ng-class="result() ? 'alert alert-success' : 'alert alert-danger'" role="alert"  >
 					<p ng-bind="resultMessage()" class="example-test-user-notice"></p>
 					<br /><br />
-					<a class="btn btn-lg btn-primary pull-right" href="#q1">Start&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>
+					<a class="btn btn-lg btn-primary pull-right" href="#q1">Question 1&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>
 					<br/><br/>
 				</div>
 			</div>
@@ -24,7 +24,7 @@
 					<br /><br />
 					The moment you can tell which one it is, press <code>E</code> for <strong>smile</strong> or <code>I</code> for <strong>frown</strong>.
 					<br /><br /><br /><br />
-					<a class="btn btn-lg btn-primary" ng-click="startButtonClicked()" ng-disabled="disableReadToTry">{{readyToTryButton}} <span class="glyphicon glyphicon-chevron-right"></span></a>
+					<a class="btn btn-lg btn-primary" ng-click="onReadyToTryButton()" ng-disabled="disableReadToTry">{{readyToTryButton}} <span class="glyphicon glyphicon-chevron-right"></span></a>
 				</h4>
 
 			</div>

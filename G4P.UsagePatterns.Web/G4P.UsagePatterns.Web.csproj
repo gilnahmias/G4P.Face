@@ -113,12 +113,13 @@
     <Content Include="app\dist\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="app\dist\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="app\dist\index.html" />
-    <Content Include="app\dist\scripts\app-2da35a67.js" />
+    <Content Include="app\dist\scripts\app-0a3155dd.js" />
     <Content Include="app\dist\scripts\modernizr-c1ff1650.js" />
     <Content Include="app\dist\scripts\vendor-b65a2a62.js" />
-    <Content Include="app\dist\styles\app-41e8a169.css" />
+    <Content Include="app\dist\styles\app-8f7407b3.css" />
     <Content Include="app\dist\styles\vendor-dfb3e5a9.css" />
     <Content Include="packages.config" />
+    <Content Include="app\dist\cache.manifest" />
     <None Include="Properties\PublishProfiles\g4p-face.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
