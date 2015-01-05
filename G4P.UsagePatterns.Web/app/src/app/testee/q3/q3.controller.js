@@ -1,17 +1,16 @@
 'use strict';
 
 angular.module('infer')
-.controller('Q1Ctrl', function ($scope, storageService, $timeout, $q, $log, kcSleep, $document, performance, $window, keys){
+.controller('Q3Ctrl', function ($scope, storageService, $timeout, $q, $log, kcSleep, $document, performance, $window, keys){
 
   $scope.username = storageService.get('username');
-
+  $scope.id = "Question 1";
   $scope.images = {
         // stolen from http://pho.to/press/cartoon-face.php
         static: "assets/images/o_ce646cd62c98e6b7-0.jpg",
         dynamic: "assets/images/press-cartoonizer-animated-brad.gif"
       };
 
-      $scope.id = "Question 1";
       $scope.testStatus = 'todo';
       $scope.testIsDone = function(){
         return 'done' === $scope.testStatus;
@@ -92,7 +91,7 @@ angular.module('infer')
 var endTest = function(){
   $scope.endMorphAt = performance.now();
   $scope.testStatus = 'done';
-
+  
   storageService.addResult($scope.id, $scope.result(), $scope.endMorphAt - $scope.startMorphAt);
 };
 

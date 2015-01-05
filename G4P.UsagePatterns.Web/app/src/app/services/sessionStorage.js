@@ -24,6 +24,26 @@ var StorageService = (function() {
     }
   };
 
+  StorageService.prototype.addResult = function(question, result, delay) {
+    var results = this.results();
+    results.push ({
+      username: this.username(),
+      timestamp: new Date().getTime(),
+      question: question,
+      result: !!result,
+      delay: delay
+    });
+    this.set('results', results);
+  };
+
+  StorageService.prototype.results = function() {
+    return this.get('results') || [];
+  };
+
+  StorageService.prototype.clearResults = function() {
+    return this.set('results', []);
+  };
+
   /*@ngInject*/
   angular.module('infer').service('storageService', StorageService);
 

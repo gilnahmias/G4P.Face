@@ -23,6 +23,18 @@ angular.module('infer', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngR
     templateUrl: 'app/testee/q1/q1.html',
     controller: 'Q1Ctrl'
   })
+  .when('/q2', {
+    templateUrl: 'app/testee/q2/q2.html',
+    controller: 'Q2Ctrl'
+  })
+  .when('/q3', {
+    templateUrl: 'app/testee/q3/q3.html',
+    controller: 'Q3Ctrl'
+  })
+  .when('/done', {
+    templateUrl: 'app/testee/done/done.html',
+    controller: 'DoneCtrl'
+  })
   .otherwise({
     redirectTo: '/'
   });
@@ -44,6 +56,12 @@ angular.module('infer', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngR
       scope.$apply(attrs.onKeyup);
     });
   };
+})
+.value('keys', {
+  'i': 73,
+  'e': 69,
+  'space': 32,
+  'enter': 13
 })
 .value('performance', performance);
 ;

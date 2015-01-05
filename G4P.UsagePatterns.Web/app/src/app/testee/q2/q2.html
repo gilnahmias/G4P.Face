@@ -8,7 +8,7 @@
 				<div ng-class="result() ? 'alert alert-success' : 'alert alert-danger'" role="alert"  >
 					<p ng-bind="resultMessage()" class="example-test-user-notice"></p>
 					<br /><br />
-					<a class="btn btn-lg btn-primary pull-right" href="#q1" id="btnNext"><b>Question 1&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>
+					<a class="btn btn-lg btn-primary pull-right" href="#q3" id="btnNext">Question 3&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>
 					<br/><br/>
 				</div>
 			</div>
@@ -19,12 +19,12 @@
 			<br /><br /><br />
 
 			<div class="col-xs-3 col-xs-offset-2">
+				<h3>Question 2</h3>
 				<h4>
-					{{username}}, next we will show you a face. The face will morph into either <strong>smile</strong> or <strong>frown</strong>.
 					<br /><br />
 					The moment you can tell which one it is, press <code>E</code> for <strong>smile</strong> or <code>I</code> for <strong>frown</strong>.
 					<br /><br /><br /><br />
-					<a class="btn btn-lg btn-primary" ng-click="onReadyToTryButton()" ng-disabled="disableReadToTry">{{readyToTryButton}} <span class="glyphicon glyphicon-chevron-right"></span></a>
+					<a class="btn btn-lg btn-primary" ng-click="onStartButtonClicked()" ng-disabled="disableStartButton">{{startButton}}&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>
 				</h4>
 
 			</div>
@@ -37,5 +37,24 @@
 			<hr />
 			<p>Games for peace</p>
 		</div>
+
+
 	</div>
+
+	<style scoped>
+		.blanket {
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			width:100%;
+			height:100%;
+			text-align:center;
+			z-index: 1000;
+			background-color: rgba(255,255,255,0.4);
+		}
+
+		.example-test-user-notice {
+			font-size: 1.5em;
+		}
+	</style>
 </div>
