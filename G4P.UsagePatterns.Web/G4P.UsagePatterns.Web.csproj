@@ -116,7 +116,7 @@
     <Content Include="app\dist\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="app\dist\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="app\dist\index.html" />
-    <Content Include="app\dist\scripts\app-1a31b274.js" />
+    <Content Include="app\dist\scripts\app-e6790816.js" />
     <Content Include="app\dist\scripts\modernizr-c1ff1650.js" />
     <Content Include="app\dist\scripts\vendor-b65a2a62.js" />
     <Content Include="app\dist\styles\app-8f7407b3.css" />

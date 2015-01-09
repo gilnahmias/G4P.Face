@@ -57,8 +57,7 @@ angular.module('infer', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngR
     });
   };
 })
-.directive ('question', G4P.Directives.Question)
-.directive ('appfooter', G4P.Directives.Footer)
+
 .value('keys', {
   'i': 73,
   'e': 69,

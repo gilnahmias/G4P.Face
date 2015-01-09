@@ -1,9 +1,11 @@
+'use strict';
+
 var G4P = G4P || {};
 G4P.Directives = G4P.Directives || {};
 
 G4P.Directives.Question = function() {
 	return { 
-		templateUrl: '/app/testee/directives/question/question.html',
+		templateUrl: '/app/directives/question.html',
 		scope: {
 			id: '@',
 			correctAnswer: '@',
@@ -15,8 +17,8 @@ G4P.Directives.Question = function() {
 
 			$scope.images = {
 		        // stolen from http://pho.to/press/cartoon-face.php
-		        static: "assets/images/o_ce646cd62c98e6b7-0.jpg",
-		        dynamic: "assets/images/press-cartoonizer-animated-brad.gif"
+		        static: 'assets/images/o_ce646cd62c98e6b7-0.jpg',
+		        dynamic: 'assets/images/press-cartoonizer-animated-brad.gif'
 		    };
 
 		    $scope.testStatus = 'todo';
@@ -26,7 +28,7 @@ G4P.Directives.Question = function() {
 
 		    $scope.image = $scope.images.static;
 
-		    $scope.startButton = "Space to start";
+		    $scope.startButton = 'Space to start';
 		    $scope.onStartButtonClicked = function(){
 		    	$q(function(resolve){ resolve(); })
 		    	.then(function(){
@@ -42,7 +44,7 @@ G4P.Directives.Question = function() {
 		    	})
 		    	.then(kcSleep(1000))
 		    	.then(function(){
-		    		$scope.startButton = "Go";
+		    		$scope.startButton = 'Go';
 		    		$scope.disableStartButton = true;
 
 		    		$scope.testStatus = 'active';
@@ -57,13 +59,13 @@ G4P.Directives.Question = function() {
 
 		    $scope.onEnterSubmitName = function (){
 		    	if ($scope.event.keyCode === 13) {
-		    		$scope.step = "2";
+		    		$scope.step = '2';
 		    	}
 		    };
 
 		    $scope.handleKeyPress= function (){
 		    	if ($scope.event.keyCode === 27) {
-		    		$scope.step = "1";
+		    		$scope.step = '1';
 		    	}
 		    };
 
@@ -143,11 +145,11 @@ G4P.Directives.Question = function() {
 		    	}
 
 		    	var ms = $scope.endMorphAt - $scope.startMorphAt,
-		    	timingMessage = "it took you " + ms + " milliseconds";
+		    	timingMessage = 'it took you ' + ms + ' milliseconds';
 
 		    	return $scope.result() 
-		    	? "Correct! Brad was smiling! " + timingMessage
-		    	: "Oops! Brad was smiling..." + timingMessage
+		    	? 'Correct! Brad was smiling! ' + timingMessage
+		    	: 'Oops! Brad was smiling...' + timingMessage
 		    };
 		},
 		replace: true,
