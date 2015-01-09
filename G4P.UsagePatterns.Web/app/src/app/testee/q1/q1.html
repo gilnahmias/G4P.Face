@@ -2,59 +2,12 @@
 
 	<div ng-include="'components/navbar/navbar.html'"></div>
 
-	<div class="form-group text-center" }>
-		<div class="row padding">
-			<div ng-cloak ng-show="testIsDone()" class='blanket'>
-				<div ng-class="result() ? 'alert alert-success' : 'alert alert-danger'" role="alert"  >
-					<p ng-bind="resultMessage()" class="example-test-user-notice"></p>
-					<br /><br />
-					<a class="btn btn-lg btn-primary pull-right" href="#q2" id="btnNext">Question 2&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>
-					<br/><br/>
-				</div>
-			</div>
+	<question correct-answer="smile" id="Question 1" next-id='Question 2' next-url='#q2' />
 
-			<div class="pressedKey" ng-show="showE">smile</div>
-			<div class="pressedKey" ng-show="showI">frown</div>
-
-			<br /><br /><br />
-
-			<div class="col-xs-3 col-xs-offset-2">
-				<h3><b>Question 1</b></h3>
-				<h4>
-					<br /><br />
-					The moment you can tell which one it is, press <code>E</code> for <strong>smile</strong> or <code>I</code> for <strong>frown</strong>.
-					<br /><br /><br /><br />
-					<a class="btn btn-lg btn-primary" ng-click="onStartButtonClicked()" ng-disabled="disableStartButton">{{startButton}}&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>
-				</h4>
-
-			</div>
-			<div class="col-xs-4">
-				<img ng-src="{{image}}" />
-			</div>
-		</div>
-
-		<div class="footer col-xs-12" style="position: fixed; bottom: 0; left: 0">
-			<hr />
-			<p>Games for peace</p>
-		</div>
-
-
+<appfooter />
+	<div class="footer col-xs-12 text-center" style="position: fixed; bottom: 0; left: 0">
+		<hr />
+		<p>Games for peace</p>
 	</div>
 
-	<style scoped>
-		.blanket {
-			position: absolute;
-			left: 0px;
-			top: 0px;
-			width:100%;
-			height:100%;
-			text-align:center;
-			z-index: 1000;
-			background-color: rgba(255,255,255,0.4);
-		}
-
-		.example-test-user-notice {
-			font-size: 1.5em;
-		}
-	</style>
 </div>
