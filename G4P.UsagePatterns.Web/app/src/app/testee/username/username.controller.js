@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('infer')
-  .controller('TesteeUsernameCtrl', function ($scope, storageService, $window){
+  .controller('TesteeUsernameCtrl', function ($scope, storageService){
 
   	$scope.username = storageService.username();
   	$scope.$watch ('username', function(newUsername){

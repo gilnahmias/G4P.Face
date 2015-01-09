@@ -4,15 +4,57 @@ var G4P = G4P || {};
 G4P.Directives = G4P.Directives || {};
 
 G4P.Directives.Question = function() {
+	var html = 	'<div class="container">' +
+					'<div class="form-group text-center" }>' +
+						'<div class="row padding">' +
+							'<div ng-cloak ng-show="testIsDone()" class="blanket">' +
+								'<div ng-class="result() ? \'alert alert-success\' : \'alert alert-danger\'" role="alert">' +
+									'<p ng-bind="resultMessage()" class="example-test-user-notice"></p>' +
+									'<br /><br />' +
+									'<a class="btn btn-lg btn-primary pull-right" ng-href="{{nextUrl}}" id="btnNext">{{nextId}}&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>' +
+									'<br/><br/>' +
+								'</div>' +
+							'</div>' +
+
+							'<div class="pressedKey" ng-show="showE">smile</div>' +
+							'<div class="pressedKey" ng-show="showI">frown</div>' +
+
+							'<br /><br /><br />' +
+
+							'<div class="col-xs-3 col-xs-offset-2">' +
+								'<h3><b>{{id}}</b></h3>' +
+								'<h4>' +
+									'<br /><br />' +
+									'The moment you can tell which one it is, press <code>E</code> for <strong>smile</strong> or <code>I</code> for <strong>frown</strong>.' +
+									'<br /><br /><br /><br />' +
+									'<a class="btn btn-lg btn-primary" ng-click="onStartButtonClicked()" ng-disabled="disableStartButton">{{startButton}}&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>' +
+								'</h4>' +
+
+							'</div>' +
+							'<div class="col-xs-4">' +
+								'<img ng-src="{{image}}" />' +
+							'</div>' +
+						'</div>' +
+					'</div>' +
+				'</div>';
+
 	return { 
-		templateUrl: '/app/directives/question.html',
+		template: html,
 		scope: {
 			id: '@',
 			correctAnswer: '@',
 			nextUrl: '@',
 			nextId: '@',
 		},
-		controller: function ($scope, $element, storageService, $document, $q, kcSleep, keys){
+
+		controller: QuestionCtrl,
+		replace: true,
+		restrict: 'E',
+	};
+};
+
+	QuestionCtrl.$inject = ['$scope', '$element', 'storageService', '$document', '$q', 'kcSleep', 'keys'];
+	function QuestionCtrl ($scope, $element, storageService, $document, $q, kcSleep, keys){
 			$scope.username = storageService.get('username');
 
 			$scope.images = {
@@ -151,8 +193,7 @@ G4P.Directives.Question = function() {
 		    	? 'Correct! Brad was smiling! ' + timingMessage
 		    	: 'Oops! Brad was smiling...' + timingMessage
 		    };
-		},
-		replace: true,
-		restrict: 'E',
-	};
-};
+		};
+
+angular.module('infer')
+	.directive ('question', G4P.Directives.Question);

@@ -73,12 +73,6 @@ gulp.task('injector:js', ['jshint', 'injector:css'], function () {
     .pipe(gulp.dest('src/'));
 });
 
-gulp.task('directives', function(){
-  return gulp.src('src/app/directives/*.js')
-    .pipe($.directiveReplace({root: 'src/app'}))
-    .pipe(gulp.dest('src/'));
-});
-
 gulp.task('partials', function () {
   return gulp.src('src/{app,components}/**/*.html')
     .pipe($.minifyHtml({
@@ -92,7 +86,7 @@ gulp.task('partials', function () {
     .pipe(gulp.dest('.tmp/inject/'));
 });
 
-gulp.task('html', ['wiredep', 'injector:css', 'injector:js', 'partials', 'directives'], function () {
+gulp.task('html', ['wiredep', 'injector:css', 'injector:js', 'partials'], function () {
   var htmlFilter = $.filter('*.html');
   var jsFilter = $.filter('**/*.js');
   var cssFilter = $.filter('**/*.css');

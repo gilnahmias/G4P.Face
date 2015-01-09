@@ -3,14 +3,6 @@
 angular.module('infer', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute', 'ui.bootstrap'])
 .config(function ($routeProvider, $locationProvider) {
   $routeProvider
-  .when('/main', {
-    templateUrl: 'app/main/main.html',
-    controller: 'MainCtrl'
-  })
-  .when('/testee', {
-    templateUrl: 'app/testee/testee.html',
-    controller: 'TesteeCtrl'
-  })
   .when('/', {
     templateUrl: 'app/testee/username/username.html',
     controller: 'TesteeUsernameCtrl'
