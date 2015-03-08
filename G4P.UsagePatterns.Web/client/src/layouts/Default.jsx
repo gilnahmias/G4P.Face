@@ -26,6 +26,7 @@ var DefaultLayout = React.createClass({
               {' © KriaSoft • '}
               <Link to="home">Home</Link> {' • '}
               <Link to="privacy">Privacy</Link>
+              <Link to="probe">Probe</Link>
             </p>
           </div>
         </div>

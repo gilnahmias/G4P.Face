@@ -15,6 +15,7 @@ React.renderComponent(
     <Route name="app" path="/" handler={require('./layouts/Default.jsx')}>
       <Route name="home" path="/" handler={require('./pages/Home.jsx')} />
       <Route name="privacy" handler={require('./pages/Privacy.jsx')} />
+      <Route name="probe" handler={require('./pages/Probe.jsx')} />
     </Route>
   </Routes>,
   document.body
