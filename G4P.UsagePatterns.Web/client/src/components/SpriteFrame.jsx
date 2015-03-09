@@ -5,27 +5,19 @@
 'use strict';
 var React = require('react');
 
-var getImageStyle = function (props){
-
-    var rowHeight = props.height / props.rows;
-    var row = Math.floor(props.frame / props.cols);
+var getState = function(){
+    var rowHeight = this.props.height / this.props.rows;
+    var row = Math.floor(this.props.frame / this.props.cols);
     var y = row * rowHeight;
 
-    var col = props.frame - row * props.cols;
-    var colWidth = props.width / props.cols;
+    var colWidth = this.props.width / this.props.cols;
+    var col = this.props.frame - row * this.props.cols;
     var x = col * colWidth;
 
-    return {
-            transform: 'translateZ(0) translateY(-' + y + 'px) translateX(-' + x + 'px)'
-        };
-};
+    var width = this.props.width / this.props.cols;
+    var height = this.props.height / this.props.rows;
 
-var getContainerStyle = function (props){
-        return {
-            width: props.width / props.cols,
-            height: props.height / props.rows,
-            overflow: 'hidden'
-        };
+    return { width: width, height: height, x: x, y: y};
 };
 
 var SpriteFrame = React.createClass({
@@ -37,9 +29,25 @@ var SpriteFrame = React.createClass({
         cols: React.PropTypes.number,
         frame: React.PropTypes.number
     },
+    getInitialState: function(){
+        return getState.call(this);
+    },
+    componentWillReceiveProps: function(){
+        this.setState(getState.call(this));
+    },
     render() {
-        return (<div style={getContainerStyle(this.props)}>
-                    <img style={getImageStyle(this.props)} src={this.props.imageUrl} />
+        var containerStyle = {
+            width: this.state.width,
+            height: this.state.height,
+            overflow: 'hidden'
+        };
+
+        var imageStyle = {
+            transform: 'translateZ(0) translateY(-' + this.state.y + 'px) translateX(-' + this.state.x + 'px)'
+        };
+
+        return (<div style={containerStyle}>
+                    <img style={imageStyle} src={this.props.imageUrl} />
                 </div>);
     }
 });
