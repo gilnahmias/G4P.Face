@@ -2,35 +2,26 @@
  * @jsx React.DOM
  */
 
- 'use strict';
+'use strict';
 
 var React = require('react');
 var ProbeStore = require('../stores/ProbeStore.js');
-var ProbeActions = require('../actions/ProbeActions.js');
+var Probe = require ('../components/Probe.jsx');
 
 var getState = function(){
-    return {test: ProbeStore.getTest()};
+    return {probe: ProbeStore.getCurrentProbe()};
 };
 
-var Probe = React.createClass({
+var ProbePage = React.createClass({
     mixins: [ProbeStore.mixin],
     getInitialState: function() { return getState(); },
     storeDidChange: function() { this.setState(getState()); },
-    addTest: function(){ ProbeActions.addTest(); },
     render() {
         return (<div>
-                Probe page here
-                <pre>{JSON.stringify(this.state, null, 2)}</pre>
-                <ul>
-                {this.state.test.map(function(item){
-                    return (
-                        <li>{item.toString()}</li>
-                        );
-                })}
-                </ul>
-                <button onClick={this.addTest}>Add test</button>
-            </div>);
+                    Probe page here
+                    <Probe probe={this.state.probe} />
+                </div>);
     }
 });
 
-module.exports = Probe;
+module.exports = ProbePage;
