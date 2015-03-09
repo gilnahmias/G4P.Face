@@ -17,14 +17,13 @@ var style = {
     fontFamily: "'Open Sans', sans-serif",
     fontWeight: 400,
     display: 'box',
-    boxAlign: 'center',
-    filter: 'blur(5px)'
+    boxAlign: 'center'
 };
 
 var Banner = React.createClass({
     render() {
         return (<div style={style}>
-                    {this.props.text}
+                    {this.props.children}
                 </div>);
     }
 });

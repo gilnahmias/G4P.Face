@@ -62,7 +62,13 @@ var Probe = React.createClass({
     },
     render() {
         var banner = isBannerVisible(this.props.probe.getState()) ?
-             <Banner text={this.state.banner} /> :
+             <Banner>
+                <div style={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'flex-start'}}>
+                    <span style={{flexBasis: '10%'}}><a href="#"><h1>&lt;</h1></a></span>
+                    <span style={{flexBasis: '80%'}}>{this.state.banner}</span>
+                    <span style={{flexBasis: '10%'}}><a href="#"><h1>&gt;</h1></a></span>
+                </div>
+             </Banner> :
              "";
 
         var sprite = this.props.probe.getSprite();
