@@ -10,6 +10,12 @@ var HomePage = React.createClass({
   render() {
     return (
       <div className="container">
+              <div className="jumbotron">
+          <div className="container text-center">
+            <h1>Games for peace</h1>
+            <p>You are the future.</p>
+          </div>
+        </div>
         <div className="row">
           <div className="col-sm-4">
             <h3>Runtime Components</h3>
