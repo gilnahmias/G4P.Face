@@ -5,6 +5,10 @@ var Probe = function(){
     this._state = "not started"; // "countdown", "running", "done"
 };
 
+Probe.prototype.getState = function(){
+    return this._state;
+};
+
 Probe.prototype.countdown = function(callback, secondsToStart){
     if (this._state !== "not started" && this._state !== "countdown" ){
         // the only two allowed states to start a countdown are "not started" and "in the middle of a countdown"

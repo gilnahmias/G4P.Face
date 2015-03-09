@@ -10,6 +10,10 @@
 
  var keys = { Space: 32 };
 
+var isBannerVisible = function(state){
+    return state !== "running";
+};
+
 var Probe = React.createClass({
     getInitialState: function() {
         return {banner: "Space to start"};
@@ -30,7 +34,6 @@ var Probe = React.createClass({
     },
     handleGlobalKeyUp : function(e){
         if (e.which === keys.Space){
-            //this.props.probe.countdown(this.countdownChanged);
             ProbeActions.toggleProbe(this.countdownChanged);
         }
     },
@@ -43,10 +46,14 @@ var Probe = React.createClass({
         }
     },
     render() {
+        var banner = isBannerVisible(this.props.probe.getState()) ?
+             <Banner text={this.state.banner} /> :
+             "";
+
         return (
           <div>
           probe
-          <Banner text={this.state.banner} />
+          {banner}
           {JSON.stringify (this.props.probe)}
           </div>
           );
