@@ -6,6 +6,7 @@
 
  var React = require('react');
  var Banner = require ('./probe/Banner.jsx');
+ var SpriteFrame = require ('./SpriteFrame.jsx');
  var ProbeActions = require('../actions/ProbeActions.js');
 
  var keys = { Space: 32 };
@@ -61,6 +62,7 @@ var Probe = React.createClass({
           probe
           {banner}
           {JSON.stringify (this.props.probe)}
+          <SpriteFrame imageUrl="images/sprite1.png" width={1} height={1} rows={1} cols={1} />
           </div>
           );
     }
