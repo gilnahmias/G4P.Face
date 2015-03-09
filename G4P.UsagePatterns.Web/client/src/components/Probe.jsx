@@ -62,7 +62,7 @@ var Probe = React.createClass({
           probe
           {banner}
           {JSON.stringify (this.props.probe)}
-          <SpriteFrame imageUrl="images/sprite1.png" width={1} height={1} rows={1} cols={1} />
+          <SpriteFrame imageUrl="images/sprite1.png" width={710} height={355} rows={3} cols={6} frame={10} />
           </div>
           );
     }
