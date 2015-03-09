@@ -18,7 +18,6 @@ var ProbePage = React.createClass({
     storeDidChange: function() { this.setState(getState()); },
     render() {
         return (<div>
-                    Probe page here
                     <Probe probe={this.state.probe} />
                 </div>);
     }

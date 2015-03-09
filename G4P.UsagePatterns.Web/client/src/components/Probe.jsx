@@ -26,7 +26,7 @@ var Probe = React.createClass({
         var frame = probe.getFrame();
         var totalFrames = probe.getSprite().getTotalFrames();
         if (state === "done"){
-            var banner = "It took you " + elapsed + "ms (frame " + frame + "/" + totalFrames + ").";
+            var banner = "It took you " + elapsed.toFixed(1) + "ms (frame " + frame + "/" + totalFrames + ").";
             this.setState ({banner: banner});
         }
     },
@@ -69,10 +69,8 @@ var Probe = React.createClass({
 
         return (
           <div>
-              probe
               {banner}
-              {JSON.stringify (this.props.probe)}
-
+              
               <SpriteFrame 
                     imageUrl={sprite.getImageUrl()} 
                     width={sprite.getWidth()} 
