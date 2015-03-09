@@ -1,12 +1,23 @@
 'use strict';
 
-var Probe = function(){
+var Probe = function(sprite){
     this._id = guidGenerator();
     this._state = "not started"; // "countdown", "running", "done"
+    this._sprite = sprite;
+    this._frame = 0;
+    this._frameDuration = 200;
+};
+
+Probe.prototype.getSprite = function(){
+    return this._sprite;
 };
 
 Probe.prototype.getState = function(){
     return this._state;
+};
+
+Probe.prototype.getFrame = function(){
+    return this._frame;
 };
 
 Probe.prototype.countdown = function(callback, secondsToStart){
@@ -31,9 +42,14 @@ Probe.prototype.countdown = function(callback, secondsToStart){
     setTimeout(this.countdown.bind(this, callback, secondsToStart - 1), 1000);
 };
 
-Probe.prototype.start = function(){
+Probe.prototype.nextFrame = function(){
+    ++this._frame;
+};
+
+Probe.prototype.start = function(animationCallback){
     this._startedAt = window.performance.now();
     this._state = "running";
+    this.animate(animationCallback);
 };
 
 Probe.prototype.stop = function(){
@@ -51,12 +67,27 @@ Probe.prototype.elapsed = function(){
     }
 };
 
-Probe.prototype.toggle = function(countdownCallback){
+Probe.prototype.toggle = function(countdownCallback, animationCallback){
     switch (this._state){
         case "not started": this.countdown(countdownCallback); return;
-        case "countdown": this.start(); return;
+        case "countdown": this.start(animationCallback); return;
         case "running": this.stop(); return;
     }
+};
+
+Probe.prototype.animate = function(callback, frameNumber){
+    if (this._state !== "running"){
+        return;
+    }
+
+    if (frameNumber === undefined){
+        frameNumber = 0;
+    }
+
+    this._frame = frameNumber;
+    callback(this._frame);
+
+    setTimeout(this.animate.bind(this, callback, frameNumber + 1), this._frameDuration);
 };
 
 function guidGenerator() {

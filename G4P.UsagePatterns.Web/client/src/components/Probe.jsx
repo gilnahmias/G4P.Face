@@ -17,12 +17,17 @@ var isBannerVisible = function(state){
 
 var Probe = React.createClass({
     getInitialState: function() {
-        return {banner: "Space to Start"};
+        return {banner: "Space to Start", frame: 0};
     },
-    componentWillReceiveProps: function(){
-        var probeState = this.props.probe.getState();
-        if (probeState === "done"){
-            this.setState ({banner: "It took you " + this.props.probe.elapsed() + " ms"});
+    componentWillReceiveProps: function(nextProps){
+        var probe = nextProps.probe;
+        var state = probe.getState();
+        var elapsed = probe.elapsed();
+        var frame = probe.getFrame();
+        var totalFrames = probe.getSprite().getTotalFrames();
+        if (state === "done"){
+            var banner = "It took you " + elapsed + "ms (frame " + frame + "/" + totalFrames + ").";
+            this.setState ({banner: banner});
         }
     },
     componentWillMount: function() {
@@ -41,30 +46,42 @@ var Probe = React.createClass({
     },
     handleGlobalKeyUp : function(e){
         if (e.which === keys.Space){
-            ProbeActions.toggleProbe(this.countdownChanged);
+            ProbeActions.toggleProbe(this.countdownChanged, this.frameChanged);
         }
     },
     countdownChanged: function (secondsToStart){
         if (secondsToStart === 0){
-            ProbeActions.startProbe();
+            ProbeActions.startProbe(this.frameChanged);
         }
         else {
             this.setState({ banner: "We will start in " + secondsToStart + " seconds" });
         }
+    },
+    frameChanged: function (frame){
+        this.setState({frame: frame});
     },
     render() {
         var banner = isBannerVisible(this.props.probe.getState()) ?
              <Banner text={this.state.banner} /> :
              "";
 
+        var sprite = this.props.probe.getSprite();
+
         return (
           <div>
-          probe
-          {banner}
-          {JSON.stringify (this.props.probe)}
-          <SpriteFrame imageUrl="images/sprite1.png" width={710} height={355} rows={3} cols={6} frame={10} />
+              probe
+              {banner}
+              {JSON.stringify (this.props.probe)}
+
+              <SpriteFrame 
+                    imageUrl={sprite.getImageUrl()} 
+                    width={sprite.getWidth()} 
+                    height={sprite.getHeight()} 
+                    rows={sprite.getRows()} 
+                    cols={sprite.getCols()} 
+                    frame={this.state.frame} />
           </div>
-          );
+        );
     }
 });
 

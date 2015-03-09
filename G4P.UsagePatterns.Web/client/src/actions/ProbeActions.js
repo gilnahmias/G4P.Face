@@ -1,15 +1,17 @@
 var biff = require('../dispatcher/biff');
 
 var ProbeActions = biff.createActions({
-    toggleProbe: function(countdownCallback) {
+    toggleProbe: function(countdownCallback, animationCallback) {
         this.dispatch({
           actionType: 'TOGGLE_PROBE',
-          countdownCallback: countdownCallback
+          countdownCallback: countdownCallback,
+          animationCallback: animationCallback
       });
     },
-    startProbe: function(text) {
+    startProbe: function(animationCallback) {
         this.dispatch({
-          actionType: 'START_PROBE'
+          actionType: 'START_PROBE',
+          animationCallback: animationCallback
       });
     },
 });
