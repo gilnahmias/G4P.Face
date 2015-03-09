@@ -12,8 +12,8 @@ var getImageStyle = function (props){
     var y = row * rowHeight;
 
     var col = props.frame - row * props.cols;
-    var frameWidth = props.width / props.cols;
-    var x = col * frameWidth;
+    var colWidth = props.width / props.cols;
+    var x = col * colWidth;
 
     return {
             transform: 'translateZ(0) translateY(-' + y + 'px) translateX(-' + x + 'px)'
@@ -34,7 +34,7 @@ var SpriteFrame = React.createClass({
         width: React.PropTypes.number,
         height: React.PropTypes.number,
         rows: React.PropTypes.number,
-        columns: React.PropTypes.number,
+        cols: React.PropTypes.number,
         frame: React.PropTypes.number
     },
     render() {
