@@ -16,7 +16,13 @@ var isBannerVisible = function(state){
 
 var Probe = React.createClass({
     getInitialState: function() {
-        return {banner: "Space to start"};
+        return {banner: "Space to Start"};
+    },
+    componentWillReceiveProps: function(){
+        var probeState = this.props.probe.getState();
+        if (probeState === "done"){
+            this.setState ({banner: "It took you " + this.props.probe.elapsed() + " ms"});
+        }
     },
     componentWillMount: function() {
         if(window.addEventListener) {
