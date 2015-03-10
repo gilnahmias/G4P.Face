@@ -1,11 +1,15 @@
 'use strict';
 
-var Probe = function(sprite){
-    this._id = guidGenerator();
+var Probe = function(sprite, id){
+    this._id = id || guidGenerator();
     this._state = "not started"; // "countdown", "running", "done"
     this._sprite = sprite;
     this._frame = 0;
     this._frameDuration = 200;
+};
+
+Probe.prototype.getId = function(){
+    return this._id;
 };
 
 Probe.prototype.getSprite = function(){
