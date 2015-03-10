@@ -9,7 +9,11 @@ var ProbeStore = require('../stores/ProbeStore.js');
 var Probe = require ('../components/Probe.jsx');
 
 var getState = function(){
-    return {probe: ProbeStore.getCurrentProbe()};
+    return {
+        probe: ProbeStore.getCurrentProbe(),
+        canMovePrev: ProbeStore.canMovePrev(),
+        canMoveNext: ProbeStore.canMoveNext()
+    };
 };
 
 var ProbePage = React.createClass({
@@ -18,7 +22,10 @@ var ProbePage = React.createClass({
     storeDidChange: function() { this.setState(getState()); },
     render() {
         return (<div>
-                    <Probe probe={this.state.probe} />
+                    <Probe 
+                        probe={this.state.probe} 
+                        canMoveNext={this.state.canMoveNext}
+                        canMovePrev={this.state.canMovePrev} />
                 </div>);
     }
 });

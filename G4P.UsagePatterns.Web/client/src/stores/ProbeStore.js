@@ -28,6 +28,12 @@ var ProbeStore = biff.createStore({
     getProbes: function(){
         return _probes;
     },
+    canMoveNext: function(){
+        return _probes.canMoveNext();
+    },
+    canMovePrev: function(){
+        return _probes.canMovePrev();
+    },
     getCurrentProbe: getCurrentProbe,
 }, function (payload){
     switch(payload.actionType){

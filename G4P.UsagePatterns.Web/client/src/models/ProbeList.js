@@ -22,15 +22,23 @@ ProbeList.prototype.getCurrentProbe = function(){
 };
 
 ProbeList.prototype.next = function(){
-    if (this._currentProbeIndex < this._list.length - 1){
+    if (this.canMoveNext()){
         ++this._currentProbeIndex;
     }
 };
 
 ProbeList.prototype.prev = function(){
-    if (this._currentProbeIndex > 0){
+    if (this.canMovePrev()){
         --this._currentProbeIndex;
     }
+};
+
+ProbeList.prototype.canMoveNext = function(){
+    return this._list.length > 0 && this._currentProbeIndex < this._list.length - 1;
+};
+
+ProbeList.prototype.canMovePrev = function(){
+    return this._list.length > 0 && this._currentProbeIndex > 0
 };
 
 ProbeList.prototype.length = function(){
