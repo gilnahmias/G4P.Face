@@ -26,9 +26,14 @@ var Probe = React.createClass({
         var elapsed = probe.elapsed();
         var frame = probe.getFrame();
         var totalFrames = probe.getSprite().getTotalFrames();
+
         if (state === "done"){
             var banner = "It took you " + elapsed.toFixed(1) + "ms (frame " + frame + "/" + totalFrames + ").";
             this.setState ({banner: banner});
+        }
+
+        if (state == "not started"){
+            this.setState({banner: "Space to Start"});
         }
     },
     componentWillMount: function() {
