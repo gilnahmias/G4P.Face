@@ -78,9 +78,9 @@ var Probe = React.createClass({
         var banner = isBannerVisible(this.props.probe.getState()) ?
              <Banner>
                 <div style={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'flex-start'}}>
-                    <span style={{flexBasis: '10%'}} onClick={this.handlePrev}>{canMovePrev ? (<a href="#"><h1>&lt;</h1></a>) : ""}</span>
+                    <span style={{flexBasis: '10%'}} onClick={this.handlePrev}>{canMovePrev ? (<a href="#"><i className="glyphicon glyphicon-circle-arrow-left"></i></a>) : ""}</span>
                     <span style={{flexBasis: '80%'}}>{this.state.banner}</span>
-                    <span style={{flexBasis: '10%'}} onClick={this.handleNext}>{canMoveNext ? (<a href="#"><h1>&gt;</h1></a>) : ""}</span>) : ""}
+                    <span style={{flexBasis: '10%'}} onClick={this.handleNext}>{canMoveNext ? (<a href="#"><i className="glyphicon glyphicon-circle-arrow-right"></i></a>) : ""}</span>
                 </div>
              </Banner> :
              "";
