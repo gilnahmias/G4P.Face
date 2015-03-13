@@ -10,6 +10,7 @@ namespace G4P.UsagePatterns.Web
     using Microsoft.Owin.FileSystems;
     using Microsoft.Owin.StaticFiles;
     using Owin;
+    using System.Net.Http.Formatting;
 
     public class Startup
     {
@@ -27,6 +28,8 @@ namespace G4P.UsagePatterns.Web
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            httpConfiguration.Formatters.Clear();
+            httpConfiguration.Formatters.Add(new JsonMediaTypeFormatter());
             app.UseWebApi(httpConfiguration);
 
             // Make ./app/dist the default root of the static files in our Web Application.
