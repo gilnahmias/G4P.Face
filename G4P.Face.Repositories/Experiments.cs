@@ -19,7 +19,7 @@ namespace G4P.Face.Repositories
             using (IStorageEngine engine = STSdb.FromFile(DB_PATH))
             {
                 var table = engine.OpenXTable<string, Experiment>(EXPERIMENTS_COLLECTION);
-                table[experiment.Id.ToString()] = new Experiment() { Id = experiment.Id.ToString() };
+                table[experiment.Id.ToString()] = experiment;
                 engine.Commit();
             }
         }
@@ -34,7 +34,7 @@ namespace G4P.Face.Repositories
                 foreach (var row in table) //table.Forward(), table.Backward()
                 {
                     Console.WriteLine("{0} {1}", row.Key, row.Value);
-                    //experiments.Add(row.Value);
+                    experiments.Add(row.Value);
                 }
             }
 
