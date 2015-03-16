@@ -13,6 +13,8 @@ namespace G4P.Face.Models
         public string SpriteId { get; set; }
         
         public string SubjectId { get; set; }
+
+        public string MachineTelemetryId { get; set; }
         
         public long Duration { get; set; }
     }

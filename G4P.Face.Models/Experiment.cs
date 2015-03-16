@@ -16,8 +16,6 @@ namespace G4P.Face.Models
 
         public string Id { get; set; }
 
-        public string Name { get; set; }
-
         public List<string> Tags { get; set; }
 
         public long CreatedAt { get; set; }

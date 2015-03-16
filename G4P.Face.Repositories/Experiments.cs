@@ -11,12 +11,11 @@ namespace G4P.Face.Repositories
 {
     public class Experiments
     {
-        const string DB_PATH = @"c:\g4p-face.db";
         const string EXPERIMENTS_COLLECTION = "experiments";
 
         public void Add(Experiment experiment)
         {
-            using (IStorageEngine engine = STSdb.FromFile(DB_PATH))
+            using (IStorageEngine engine = DB.CreateEngine())
             {
                 var table = engine.OpenXTable<string, Experiment>(EXPERIMENTS_COLLECTION);
                 table[experiment.Id.ToString()] = experiment;
@@ -28,7 +27,7 @@ namespace G4P.Face.Repositories
         {
             var experiments = new List<Experiment>();
 
-            using (IStorageEngine engine = STSdb.FromFile(DB_PATH))
+            using (IStorageEngine engine = DB.CreateEngine())
             {
                 var table = engine.OpenXTable<string, Experiment>(EXPERIMENTS_COLLECTION);
                 foreach (var row in table) //table.Forward(), table.Backward()
@@ -37,9 +36,18 @@ namespace G4P.Face.Repositories
                     experiments.Add(row.Value);
                 }
             }
-
             return experiments;
         }
 
+
+        public static void AddResult(string experimentId, ProbeResult result)
+        {
+            using (IStorageEngine engine = DB.CreateEngine())
+            {
+                var table = engine.OpenXTable<string, Experiment>(EXPERIMENTS_COLLECTION);
+                table[experimentId].Results.Add(result);
+                engine.Commit();
+            }
+        }
     }
 }

@@ -42,6 +42,7 @@
     <Compile Include="Experiment.cs" />
     <Compile Include="ExperimentTemplate.cs" />
     <Compile Include="GlorifiedString.cs" />
+    <Compile Include="MachineTelemetry.cs" />
     <Compile Include="ProbeResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sprite.cs" />

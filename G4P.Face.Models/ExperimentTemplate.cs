@@ -8,6 +8,9 @@ namespace G4P.Face.Models
 {
     public class ExperimentTemplate
     {
-        public List<Sprite> Sprites { get; set; }
+        public string Id { get; set; }
+
+        public List<string> Tags { get; set; }
+        public List<string> SpriteIds { get; set; }
     }
 }
