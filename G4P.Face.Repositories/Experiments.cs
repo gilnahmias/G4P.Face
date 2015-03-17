@@ -13,12 +13,31 @@ namespace G4P.Face.Repositories
     {
         const string EXPERIMENTS_COLLECTION = "experiments";
 
-        public void Add(Experiment experiment)
+        public void Clear()
         {
-            using (IStorageEngine engine = DB.CreateEngine())
+            using (var engine = DB.CreateEngine())
             {
                 var table = engine.OpenXTable<string, Experiment>(EXPERIMENTS_COLLECTION);
-                table[experiment.Id.ToString()] = experiment;
+                table.Clear();
+                engine.Commit();
+            }
+        }
+
+        public Experiment GetById(string expdrimentId)
+        {
+            using (var engine = DB.CreateEngine())
+            {
+                var table = engine.OpenXTable<string, Experiment>(EXPERIMENTS_COLLECTION);
+                return table[expdrimentId];
+            }
+        }
+
+        public void AddOrUpdate(Experiment experiment)
+        {
+            using (var engine = DB.CreateEngine())
+            {
+                var table = engine.OpenXTable<string, Experiment>(EXPERIMENTS_COLLECTION);
+                table[experiment.Id] = experiment;
                 engine.Commit();
             }
         }
@@ -27,12 +46,11 @@ namespace G4P.Face.Repositories
         {
             var experiments = new List<Experiment>();
 
-            using (IStorageEngine engine = DB.CreateEngine())
+            using (var engine = DB.CreateEngine())
             {
                 var table = engine.OpenXTable<string, Experiment>(EXPERIMENTS_COLLECTION);
                 foreach (var row in table) //table.Forward(), table.Backward()
                 {
-                    Console.WriteLine("{0} {1}", row.Key, row.Value);
                     experiments.Add(row.Value);
                 }
             }
@@ -40,14 +58,27 @@ namespace G4P.Face.Repositories
         }
 
 
-        public static void AddResult(string experimentId, ProbeResult result)
+        public void AddOrUpdateResult(string experimentId, ProbeResult result)
         {
-            using (IStorageEngine engine = DB.CreateEngine())
+            using (var engine = DB.CreateEngine())
             {
                 var table = engine.OpenXTable<string, Experiment>(EXPERIMENTS_COLLECTION);
-                table[experimentId].Results.Add(result);
+                result.Id = result.Id ?? result.Timestamp + "_" + result.SubjectId + "_" + new Random().Next(100);
+                table[experimentId].Results[result.Id] = result;
                 engine.Commit();
             }
+        }
+
+        public IEnumerable<ProbeResult> GetResultsForExperiment(string experimentId){
+            var experiment = this.GetById(experimentId);
+
+            var results = new List<ProbeResult>();
+            foreach (var result in experiment.Results)
+            {
+                results.Add(result.Value);
+            }
+
+            return results;
         }
     }
 }

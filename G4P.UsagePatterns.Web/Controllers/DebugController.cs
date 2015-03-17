@@ -16,28 +16,15 @@ namespace G4P.UsagePatterns.Web.Controllers
     [RoutePrefix("debug")]
     public class DebugController : ApiController
     {
-
-        [HttpGet, Route("add-experiments/{count}")]
-        public IHttpActionResult AddExperiments(int count)
+        [HttpGet, Route("init")]
+        public IHttpActionResult InitDB()
         {
-            var experiments = new Experiments();
-            var ids = new List<string>();
+            Seed.PurgeAll();
+            Seed.Sprites();
+            Seed.ExperimentTemplates();
+            Seed.Experiments();
 
-            for (var i = 0; i < count; i++)
-            {
-                var experiment = this.CreateFakeExpriment();
-                ids.Add(experiment.Id);
-                experiments.Add(experiment);
-            }
-
-            return Ok(ids);
-        }
-
-        private Experiment CreateFakeExpriment()
-        {
-            var experiment = new Experiment();
-
-            return experiment;
+            return Ok("done");
         }
 
         [HttpGet, Route("browser")]

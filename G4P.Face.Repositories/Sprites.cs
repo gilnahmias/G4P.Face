@@ -9,19 +9,51 @@ namespace G4P.Face.Repositories
 {
     public class Sprites
     {
-        Sprite GetById(string id)
+        const string SPRITES_COLLECTION = "sprites";
+
+        public void Clear()
         {
-            return null;
+            using (var engine = DB.CreateEngine())
+            {
+                var table = engine.OpenXTable<string, Sprite>(SPRITES_COLLECTION);
+                table.Clear();
+                engine.Commit();
+            }
         }
 
-        IEnumerable<Sprite> GetAll()
+        public Sprite GetById(string id)
         {
-            return null;
+            using (var engine = DB.CreateEngine())
+            {
+                var table = engine.OpenXTable<string, Sprite>(SPRITES_COLLECTION);
+                return table[id];
+            }
         }
 
-        void Add(Sprite sprite)
+        public IEnumerable<Sprite> GetAll()
         {
+            var sprites = new List<Sprite>();
 
+            using (var engine = DB.CreateEngine())
+            {
+                var table = engine.OpenXTable<string, Sprite>(SPRITES_COLLECTION);
+                foreach (var row in table) //table.Forward(), table.Backward()
+                {
+                    sprites.Add(row.Value);
+                }
+            }
+
+            return sprites;
+        }
+
+        public void AddOrUpdate(Sprite sprite)
+        {
+            using (var engine = DB.CreateEngine())
+            {
+                var table = engine.OpenXTable<string, Sprite>(SPRITES_COLLECTION);
+                table[sprite.Id] = sprite;
+                engine.Commit();
+            }
         }
     }
 }

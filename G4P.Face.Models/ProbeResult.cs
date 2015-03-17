@@ -8,6 +8,8 @@ namespace G4P.Face.Models
 {
     public class ProbeResult
     {
+        public string Id { get; set; }
+
         public long Timestamp { get; set; }
 
         public string SpriteId { get; set; }
@@ -17,5 +19,7 @@ namespace G4P.Face.Models
         public string MachineTelemetryId { get; set; }
         
         public long Duration { get; set; }
+
+        public int Frame { get; set; }
     }
 }

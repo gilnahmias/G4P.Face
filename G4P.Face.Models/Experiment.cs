@@ -1,4 +1,5 @@
-﻿using System;
+﻿using G4P.Face.Models.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,9 @@ namespace G4P.Face.Models
         public Experiment()
         {
             this.Id = Guid.NewGuid().ToString();
-            this.CreatedAt = DateTimeOffset.UtcNow.UtcTicks / TimeSpan.TicksPerMillisecond;
+            this.CreatedAt = Time.DateTimeOffsetToMs(DateTimeOffset.UtcNow);
+            this.Results = new Dictionary<string, ProbeResult>();
+            this.Facilitators = new List<string>();
         }
 
         public string Id { get; set; }
@@ -26,14 +29,6 @@ namespace G4P.Face.Models
 
         public ExperimentTemplate Template { get; set; }
 
-        public List<ProbeResult> Results { get; set; }
-
-        public static DateTime UnixTimeStampToDateTime(double unixTimeStamp)
-        {
-            // Unix timestamp is seconds past epoch
-            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
-            dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
-            return dtDateTime;
-        }
+        public Dictionary<string, ProbeResult> Results { get; set; }
     }
 }

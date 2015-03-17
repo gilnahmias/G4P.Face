@@ -13,25 +13,34 @@ using System.Web.Http;
 
 namespace G4P.UsagePatterns.Web.Controllers
 {
-    [RoutePrefix("experiments")]
+    [RoutePrefix("data/experiments")]
     public class ExperimentsController : ApiController
     {
-        private Lazy<Experiments> _experiments = new Lazy<Experiments>(() => new Experiments());
-
-        private Experiments Experiments
-        {
-            get { return _experiments.Value; }
-        }
-
+        [HttpGet, Route("")]
         public IHttpActionResult GetValues()
         {
-            return Ok(Experiments.GetAll());
+            var experiments = Repositories.Experiments.GetAll();
+            return Ok(experiments);
+        }
+
+        [HttpGet, Route("{experimentId}")]
+        public IHttpActionResult GetById(string experimentId)
+        {
+            var experiment = Repositories.Experiments.GetById(experimentId);
+            return Ok(experiment);
         }
 
         [HttpPost, Route("{experimentId}/results")]
         public void Add(string experimentId, [FromBody]ProbeResult result)
         {
-            Experiments.AddResult(experimentId, result);
+            Repositories.Experiments.AddOrUpdateResult(experimentId, result);
+        }
+
+        [HttpGet, Route("{experimentId}/results")]
+        public IHttpActionResult GetResultsForExperiment(string experimentId)
+        {
+            var results = Repositories.Experiments.GetResultsForExperiment(experimentId);
+            return Ok(results);
         }
     }
 
