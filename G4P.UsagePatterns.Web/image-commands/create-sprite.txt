@@ -1,0 +1,2 @@
+#imagemagick
+montage a*.jpg -tile 15x40 -geometry 512x384+0+0 out.jpg
