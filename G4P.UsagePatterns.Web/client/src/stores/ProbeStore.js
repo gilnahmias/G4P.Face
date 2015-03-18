@@ -6,7 +6,8 @@ var ProbeList = require ('../models/ProbeList');
 var _probes = new ProbeList();
 
 var createSprite = function(){
-    return new Sprite("images/sprite1.png", 710, 355, 3, 6);
+    //return new Sprite("images/sprite1.png", 710, 355, 3, 6);
+    return new Sprite("images/sprite-arab-angry-smile-teeth-small.jpg", 7680, 15360, 40, 15);
 };
 
 var createNewProbe = function(id){

@@ -5,7 +5,7 @@ var Probe = function(sprite, id){
     this._state = "not started"; // "countdown", "running", "done"
     this._sprite = sprite;
     this._frame = 0;
-    this._frameDuration = 200;
+    this._frameDuration = 16; //ms
 };
 
 Probe.prototype.getId = function(){
