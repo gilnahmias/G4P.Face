@@ -5,7 +5,7 @@ var Probe = function(sprite, id){
     this._state = "not started"; // "countdown", "running", "done"
     this._sprite = sprite;
     this._frame = 0;
-    this._frameDuration = 16; //ms
+    this._frameDuration = 16; //16ms = 60fps
 };
 
 Probe.prototype.getId = function(){
@@ -91,7 +91,9 @@ Probe.prototype.animate = function(callback, frameNumber){
     this._frame = frameNumber;
     callback(this._frame);
 
-    setTimeout(this.animate.bind(this, callback, frameNumber + 1), this._frameDuration);
+    if (this._frame < this._sprite.getTotalFrames()){
+        setTimeout(this.animate.bind(this, callback, frameNumber + 1), this._frameDuration);
+    }
 };
 
 function guidGenerator() {

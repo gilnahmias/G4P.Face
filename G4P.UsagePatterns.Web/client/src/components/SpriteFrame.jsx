@@ -6,12 +6,14 @@
 var React = require('react');
 
 var getState = function(){
+    var frame = Math.min(this.props.frame, this.props.totalFrames - 1);
+
     var rowHeight = this.props.height / this.props.rows;
-    var row = Math.floor(this.props.frame / this.props.cols);
+    var row = Math.floor(frame / this.props.cols);
     var y = row * rowHeight;
 
     var colWidth = this.props.width / this.props.cols;
-    var col = this.props.frame - row * this.props.cols;
+    var col = frame - row * this.props.cols;
     var x = col * colWidth;
 
     var width = this.props.width / this.props.cols;
@@ -20,6 +22,8 @@ var getState = function(){
     return { width: width, height: height, x: x, y: y};
 };
 
+var _initTimestamp = Date.now();
+
 var SpriteFrame = React.createClass({
     propTypes: {
         imageUrl: React.PropTypes.string,
@@ -27,7 +31,8 @@ var SpriteFrame = React.createClass({
         height: React.PropTypes.number,
         rows: React.PropTypes.number,
         cols: React.PropTypes.number,
-        frame: React.PropTypes.number
+        frame: React.PropTypes.number,
+        totalFrames: React.PropTypes.number
     },
     getInitialState: function(){
         return getState.call(this);
@@ -35,7 +40,16 @@ var SpriteFrame = React.createClass({
     componentWillReceiveProps: function(){
         this.setState(getState.call(this));
     },
+    onSpriteLoad: function(e){
+        var loadTime = e.timeStamp - _initTimestamp;
+
+        if (typeof this.props.onLoad === "function"){
+            this.props.onLoad({loadTime: loadTime});
+        }
+    },
     render() {
+        _initTimestamp = Date.now();
+
         var containerStyle = {
             width: this.state.width,
             height: this.state.height,
@@ -47,7 +61,7 @@ var SpriteFrame = React.createClass({
         };
 
         return (<div style={containerStyle}>
-                    <img style={imageStyle} src={this.props.imageUrl} />
+                    <img style={imageStyle} src={this.props.imageUrl} onLoad={this.onSpriteLoad} />
                 </div>);
     }
 });

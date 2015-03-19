@@ -6,7 +6,7 @@ var Experiment = {
         insertYourId: "Insert your ID here",
         button: {
             next: "Okay, I'm ready!",
-            invalid: "Insert your ID..."
+            invalid: "Whenever you're ready..."
         }
     }
 };

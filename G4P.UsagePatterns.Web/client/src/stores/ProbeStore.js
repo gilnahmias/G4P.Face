@@ -5,13 +5,19 @@ var ProbeList = require ('../models/ProbeList');
 
 var _probes = new ProbeList();
 
-var createSprite = function(){
-    //return new Sprite("images/sprite1.png", 710, 355, 3, 6);
-    return new Sprite("images/sprite-arab-angry-smile-teeth-small.jpg", 7680, 15360, 40, 15);
-};
+var sprites = [
+    new Sprite("sprites/15x40/sprite-arab-angry-smile-small.jpg", 7680, 15360, 40, 15, 600),
+    new Sprite("sprites/15x40/sprite-arab-angry-smile-teeth-small.jpg", 7680, 15360, 40, 15, 600),
+    new Sprite("sprites/15x40/sprite-arab-smile-angry-teeth-small.jpg", 7680, 15360, 40, 15, 600),
+    new Sprite("sprites/15x40/sprite-arab-smile-angry-small.jpg", 7680, 15360, 40, 15, 600),
+    new Sprite("sprites/15x40/sprite-jew-angry-smile-small.jpg", 7680, 15360, 40, 15, 600),
+    new Sprite("sprites/15x40/sprite-jew-angry-smile-teeth-small.jpg", 7680, 15360, 40, 15, 600),
+    new Sprite("sprites/15x40/sprite-jew-smile-angry-teeth-small.jpg", 7680, 15360, 40, 15, 600),
+    new Sprite("sprites/15x40/sprite-jew-smile-angry-small.jpg", 7680, 15360, 40, 15, 600)
+];
 
 var createNewProbe = function(id){
-    var sprite = createSprite();
+    var sprite = sprites[id];
     var probe = new Probe(sprite, id);
     _probes.add(probe);
     return probe;
@@ -21,9 +27,11 @@ var getCurrentProbe = function(){
     return _probes.getCurrentProbe();
 };
 
-createNewProbe('one');
-createNewProbe('two');
-createNewProbe('three');
+createNewProbe(5);
+createNewProbe(2);
+createNewProbe(3);
+createNewProbe(4);
+createNewProbe(5);
 
 var ProbeStore = biff.createStore({
     getProbes: function(){

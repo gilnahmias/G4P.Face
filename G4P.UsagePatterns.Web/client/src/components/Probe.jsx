@@ -72,6 +72,9 @@ var Probe = React.createClass({
     handleNext: function(){
         ProbeListActions.next();
     },
+    onSpriteLoad: function(args){
+        alert ("LOADed in " + args.loadTime + " ms");
+    },
     render() {
         var canMoveNext = this.props.canMoveNext;
         var canMovePrev = this.props.canMovePrev;
@@ -87,17 +90,31 @@ var Probe = React.createClass({
 
         var sprite = this.props.probe.getSprite();
 
+        var containerStyle = {
+            display: 'flex',
+        };
+
+        var centerStyle = {
+            margin: 'auto'
+        };
+
         return (
           <div>
               {banner}
               
-              <SpriteFrame 
-                    imageUrl={sprite.getImageUrl()} 
-                    width={sprite.getWidth()} 
-                    height={sprite.getHeight()} 
-                    rows={sprite.getRows()} 
-                    cols={sprite.getCols()} 
-                    frame={this.state.frame} />
+                <div style={containerStyle}>
+                    <div style={centerStyle}>
+                        <SpriteFrame
+                            imageUrl={sprite.getImageUrl()} 
+                            width={sprite.getWidth()} 
+                            height={sprite.getHeight()} 
+                            rows={sprite.getRows()} 
+                            cols={sprite.getCols()} 
+                            frame={this.state.frame}
+                            totalFrames={sprite.getTotalFrames()} 
+                            onLoad={this.onSpriteLoad} />
+                    </div>
+                </div>
           </div>
         );
     }
