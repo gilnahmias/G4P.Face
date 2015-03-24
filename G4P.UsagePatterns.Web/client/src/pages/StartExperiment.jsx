@@ -6,6 +6,8 @@
 
 var React = require('react');
 var Strings = require ('../strings/Experiment-en.js').startScreen;
+var ExperimentStore = require ('../stores/ExperimentStore.js');
+var ExperimentActions = require ('../actions/ExperimentActions.js');
 var {Link} = require('react-router');
 
 var getState = function(){
@@ -27,12 +29,17 @@ var containerLayout = {
 };
 
 var StartExperiment = React.createClass({
-    //mixins: [ProbeStore.mixin],
+    mixins: [ExperimentStore.mixin],
     getInitialState: function() { return getState(); },
     //storeDidChange: function() { this.setState(getState()); },
     
     handleButtonClick() {
         var userId = this.refs.userId.getDOMNode().value;
+
+        if (this.state.userIdValid){
+            ExperimentActions.startExperiment(userId);
+        }
+
         return this.state.userIdValid;
     },
     

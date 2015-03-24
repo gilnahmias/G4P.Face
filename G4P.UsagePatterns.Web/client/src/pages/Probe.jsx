@@ -5,19 +5,19 @@
 'use strict';
 
 var React = require('react');
-var ProbeStore = require('../stores/ProbeStore.js');
+var ExperimentStore = require('../stores/ExperimentStore.js');
 var Probe = require ('../components/Probe.jsx');
 
 var getState = function(){
     return {
-        probe: ProbeStore.getCurrentProbe(),
-        canMovePrev: ProbeStore.canMovePrev(),
-        canMoveNext: ProbeStore.canMoveNext()
+        probe: ExperimentStore.getCurrentProbe(),
+        canMovePrev: ExperimentStore.canMovePrev(),
+        canMoveNext: ExperimentStore.canMoveNext()
     };
 };
 
 var ProbePage = React.createClass({
-    mixins: [ProbeStore.mixin],
+    mixins: [ExperimentStore.mixin],
     getInitialState: function() { return getState(); },
     storeDidChange: function() { this.setState(getState()); },
     render() {

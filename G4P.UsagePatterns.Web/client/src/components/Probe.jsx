@@ -73,7 +73,7 @@ var Probe = React.createClass({
         ProbeListActions.next();
     },
     onSpriteLoad: function(args){
-        alert ("LOADed in " + args.loadTime + " ms");
+        console.log ("LOADed in " + args.loadTime + " ms");
     },
     render() {
         var canMoveNext = this.props.canMoveNext;

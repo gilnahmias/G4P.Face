@@ -1,9 +1,9 @@
 var biff = require ('../dispatcher/biff');
 var Sprite = require ('../models/Sprite');
 var Probe = require ('../models/Probe');
-var ProbeList = require ('../models/ProbeList');
+var Experiment = require ('../models/Experiment');
 
-var _probes = new ProbeList();
+var _experiment = new Experiment();
 
 var sprites = [
     new Sprite("sprites/15x40/sprite-arab-angry-smile-small.jpg", 7680, 15360, 40, 15, 600),
@@ -19,33 +19,34 @@ var sprites = [
 var createNewProbe = function(id){
     var sprite = sprites[id];
     var probe = new Probe(sprite, id);
-    _probes.add(probe);
+    _experiment.probes().add(probe);
     return probe;
 };
 
 var getCurrentProbe = function(){
-    return _probes.getCurrentProbe();
+    return _experiment.probes().getCurrentProbe();
 };
 
 createNewProbe(5);
 createNewProbe(2);
-createNewProbe(3);
-createNewProbe(4);
-createNewProbe(5);
 
-var ProbeStore = biff.createStore({
+var ExperimentStore = biff.createStore({
     getProbes: function(){
-        return _probes;
+        return _experiment.probes();
     },
     canMoveNext: function(){
-        return _probes.canMoveNext();
+        return _experiment.probes().canMoveNext();
     },
     canMovePrev: function(){
-        return _probes.canMovePrev();
+        return _experiment.probes().canMovePrev();
     },
     getCurrentProbe: getCurrentProbe,
 }, function (payload){
     switch(payload.actionType){
+        case 'START_EXPERIMENT':
+            _experiment.userId = payload.userId;
+            break;
+
         case 'START_PROBE':
             var probe = getCurrentProbe();
             probe.start(payload.animationCallback);
@@ -65,14 +66,14 @@ var ProbeStore = biff.createStore({
             break;
 
         case 'NEXT_PROBE':
-            _probes.next();
-            console.log(_probes.getCurrentProbe().getId());
+            _experiment.probes().next();
+            console.log(_experiment.probes().getCurrentProbe().getId());
             this.emitChange();
             break;
 
         case 'PREV_PROBE':
-            _probes.prev();
-            console.log(_probes.getCurrentProbe().getId());
+            _experiment.probes().prev();
+            console.log(_experiment.probes().getCurrentProbe().getId());
             this.emitChange();
             break;
     }
@@ -80,4 +81,4 @@ var ProbeStore = biff.createStore({
     return true;
 });
 
-module.exports = ProbeStore;
+module.exports = ExperimentStore;

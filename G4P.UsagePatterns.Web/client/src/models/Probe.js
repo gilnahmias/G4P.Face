@@ -1,11 +1,12 @@
 'use strict';
 
-var Probe = function(sprite, id){
+var Probe = function(sprite, id, onStateChanged){
     this._id = id || guidGenerator();
     this._state = "not started"; // "countdown", "running", "done"
     this._sprite = sprite;
     this._frame = 0;
     this._frameDuration = 16; //16ms = 60fps
+    this._onStateChanged = onStateChanged;
 };
 
 Probe.prototype.getId = function(){
@@ -30,7 +31,7 @@ Probe.prototype.countdown = function(callback, secondsToStart){
         return;
     }
 
-    this._state = "countdown";
+    this._setState("countdown");
 
     if (secondsToStart === undefined){
         this.countdown.call(this, callback, 3);
@@ -52,13 +53,13 @@ Probe.prototype.nextFrame = function(){
 
 Probe.prototype.start = function(animationCallback){
     this._startedAt = window.performance.now();
-    this._state = "running";
+    this._setState("running");
     this.animate(animationCallback);
 };
 
 Probe.prototype.stop = function(){
     this._endedAt = window.performance.now();
-    this._state = "done";
+    this._setState("done");
 };
 
 Probe.prototype.elapsed = function(){
@@ -96,10 +97,21 @@ Probe.prototype.animate = function(callback, frameNumber){
     }
 };
 
+Probe.prototype._setState = function(state){
+    var before = this._state;
+    this._state = state;
+    var after = this._state;
+
+    if (typeof this._onStateChanged === "function" && before !== after){
+        this._onStateChanged.call(this, after, before);
+    }
+};
+
 function guidGenerator() {
     var S4 = function() {
        return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
     };
     return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
 }
+
 module.exports = Probe;
