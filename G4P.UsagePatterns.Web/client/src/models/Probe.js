@@ -1,5 +1,7 @@
 'use strict';
 
+var DataService = require("./DataService.js");
+
 var Probe = function(sprite, id, onStateChanged){
     this._id = id || guidGenerator();
     this._state = "not started"; // "countdown", "running", "done"
@@ -60,7 +62,13 @@ Probe.prototype.start = function(animationCallback){
 Probe.prototype.stop = function(){
     this._endedAt = window.performance.now();
     this._setState("done");
+
+    this.save();
 };
+
+Probe.prototype.save = function(){
+    DataService.Current.saveProbeResult(this);
+}
 
 Probe.prototype.elapsed = function(){
     if (this._state === "running"){

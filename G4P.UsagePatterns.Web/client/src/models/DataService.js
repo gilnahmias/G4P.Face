@@ -1,25 +1,40 @@
 'use strict';
 
 var Environment = require("./Environment.js");
-var reqwest = require("reqwest");
+var $ = require("jquery");
 
-var DataService = (function () {
+var DataService = (function (experimentId) {
     function DataService() {
+        this._userId = "mememe";
     }
 
-    DataService.prototype.saveExperiment = function (experiment){
+    DataService.prototype.saveProbeResult = function (probeResult){
         if (Environment.Current.isDev){
-            console.log (experiment); 
+            console.log (probeResult); 
         }
         else {
-            reqwest({
-                url: 'data/experiments/' + experiment.getId() + "/results"
-              , method: 'post'
-              , data: null
-            })
-            .fail(function(err, msg){
-                console.log (err, msg);
-            })
+
+            experimentId = "dddddd";
+
+            var serverProbeResult = {
+                "id": "idddd",
+                "timestamp": 0,
+                "spriteId": "spriteId",
+                "subjectId": "subjectId",
+                "machineTelemetryId": "machineTelemetryId",
+                "duration": 0,
+                "frame": 0
+            };
+
+            var url = 'data/experiments/' + experimentId + "/results";
+            $.ajax({
+              url: url,
+              type: 'POST',
+              data: serverProbeResult,
+              dataType: 'json',
+              contentType: "application/json; charset=utf-8"
+            });
+
         }
     };
 

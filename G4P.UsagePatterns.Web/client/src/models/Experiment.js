@@ -1,7 +1,6 @@
 'use strict';
 
 var ProbeList = require ("./ProbeList.js");
-var DataService = require ("./DataService.js");
 
 var Experiment = function(userId){
     this._id = new Date().toString();
@@ -11,15 +10,11 @@ var Experiment = function(userId){
     
     this.userId = userId;
 
-    this._probeList._onDone = this.save.bind(this);
+    //this._probeList._onDone = this.save.bind(this);
 };
 
 Experiment.prototype.probes = function(){
     return this._probeList;
-};
-
-Experiment.prototype.save = function(){
-    DataService.Current.saveExperiment(this);
 };
 
 module.exports = Experiment;

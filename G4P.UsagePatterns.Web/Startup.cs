@@ -36,7 +36,7 @@ namespace G4P.UsagePatterns.Web
             app.UseFileServer(new FileServerOptions
             {
                 RequestPath = new PathString(string.Empty),
-                FileSystem = new PhysicalFileSystem("./app/dist"),
+                FileSystem = new PhysicalFileSystem("./client/build"),
                 EnableDirectoryBrowsing = true,
             });
 
