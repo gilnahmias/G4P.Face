@@ -1,5 +1,3 @@
-///<reference path='../typings/node/node.d.ts'/>
-
 class Browser {
     private _id:string;
     private _type:string;

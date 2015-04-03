@@ -1,5 +1,3 @@
-///<reference path='../typings/node/node.d.ts'/>
-
 class Sprite {
     private _id:string;
     private _url:string;

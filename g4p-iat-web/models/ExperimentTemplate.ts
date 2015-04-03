@@ -1,6 +1,3 @@
-///<reference path='../typings/node/node.d.ts'/>
-///<reference path='../Question.ts'/>
-
 class ExperimentTemplate {
     private _id:string;
     private _name:string;

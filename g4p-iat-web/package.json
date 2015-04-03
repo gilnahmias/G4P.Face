@@ -6,7 +6,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "prestart": "npm install",
+    "prestart": "npm install && gulp build",
     "start": "node ./bin/www",
     "pretest": "npm install",
     "test": "karma start ./config/karma.js --single-run",
@@ -70,6 +70,8 @@
     "run-sequence": "^0.3.7",
     "url-loader": "^0.5.5",
     "webpack": "^1.4.3",
-    "webpack-dev-server": "^1.6.5"
+    "webpack-dev-server": "^1.6.5",
+    "gulp-typescript": "2.x",
+    "merge2": "0.x"
   }
 }

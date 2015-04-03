@@ -1,16 +1,14 @@
-///<reference path='../typings/node/node.d.ts'/>
-
 class Question {
     private _id:string;
     private _spriteId:string;
     private _introImageUrl:string;
     private _introTexts;
 
-    constructor(id:string, spriteId:string, introImageUrl:string, _introTexts) {
+    constructor(id:string, spriteId:string, introImageUrl:string, introTexts) {
         this._id = id;
         this._spriteId = spriteId;
-        this._introImageUrl = _introImageUrl;
-        this._introTexts = _introTexts;
+        this._introImageUrl = introImageUrl;
+        this._introTexts = introTexts;
     }
 
     get id(){

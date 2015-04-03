@@ -1,5 +1,3 @@
-///<reference path='../typings/node/node.d.ts'/>
-
 class User {
     private _id:string;
 

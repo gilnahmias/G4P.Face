@@ -1,14 +1,13 @@
-﻿///<reference path='../typings/node/node.d.ts'/>
-///<reference path='./ExperimentTeamplate.ts'/>
+﻿/// <reference path="ExperimentTemplate.ts" />
 
 class Experiment {
     private _id:string;
     private _facilitators:Array<string>;
     private _tags:Array<string>;
     private _startTime:Date;
-    private _template:ExperimentTeamplate;
+    private _template:ExperimentTemplate;
 
-    constructor(id:string, facilitators:Array<string>, tags:Array<string>, startTime:Date, template:ExperimentTeamplate) {
+    constructor(id:string, facilitators:Array<string>, tags:Array<string>, startTime:Date, template:ExperimentTemplate) {
         this._id = id;
         this._facilitators = facilitators;
         this._tags = tags;
@@ -33,6 +32,6 @@ class Experiment {
     }
 
     get template(){
-        return this.__template;
+        return this._template;
     }
 }

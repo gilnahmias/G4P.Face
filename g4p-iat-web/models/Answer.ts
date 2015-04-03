@@ -1,5 +1,3 @@
-///<reference path='../typings/node/node.d.ts'/>
-
 class Answer {
     private _id:string;
     private _timestamp: Date;
@@ -10,10 +8,10 @@ class Answer {
     private _questionId:string; // a question can be reused across experiments
     private _experimentId:string; // the specific instance of asking the question
 
-    constructor(id:string, _timestamp:Date, frame:number, duration:number,
+    constructor(id:string, timestamp:Date, frame:number, duration:number,
         userId:string, machineId:string, questionId:string, experimentId:string) {
         this._id = id;
-        this._timestamp = _timestamp;
+        this._timestamp = timestamp;
         this._frame = frame;
         this._duration = duration;
         this._userId = userId;
@@ -26,7 +24,7 @@ class Answer {
         return this._id;
     }
 
-    get _timestamp():string{
+    get timestamp():Date{
         return this._timestamp;
     }
 

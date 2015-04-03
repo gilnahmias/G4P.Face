@@ -142,9 +142,29 @@ gulp.task('bundle', function (cb) {
   }
 });
 
+var ts = require('gulp-typescript');
+var merge = require('merge2');
+ 
+var tsProject = ts.createProject({
+    declarationFiles: true,
+    noExternalResolve: true,
+    target: 'ES5',
+    out: 'models.js'
+});
+ 
+gulp.task('models', function() {
+    var tsResult = gulp.src('models/**/*.ts')
+                    .pipe(ts(tsProject));
+ 
+    return merge([ // Merge the two output streams, so this task is finished when the IO of both operations are done.  
+        tsResult.dts.pipe(gulp.dest('build/definitions')),
+        tsResult.js.pipe(gulp.dest('build/js'))
+    ]);
+});
+
 // Build the app from source code
 gulp.task('build', ['clean'], function (cb) {
-  runSequence(['vendor', 'assets', 'images', 'pages', 'styles', 'bundle'], cb);
+  runSequence(['vendor', 'assets', 'models', 'images', 'pages', 'styles', 'bundle'], cb);
 });
 
 // Launch a lightweight HTTP Server

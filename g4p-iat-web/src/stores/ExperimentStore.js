@@ -45,7 +45,7 @@ var ExperimentStore = biff.createStore({
     switch(payload.actionType){
         case 'START_EXPERIMENT':
             _experiment.userId = payload.userId;
-            break;
+             break;
 
         case 'START_PROBE':
             var probe = getCurrentProbe();
