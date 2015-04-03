@@ -1,4 +1,4 @@
-﻿/// <reference path="ExperimentTemplate.ts" />
+﻿import ExperimentTemplate = require ('ExperimentTemplate');
 
 class Experiment {
     private _id:string;
@@ -35,3 +35,5 @@ class Experiment {
         return this._template;
     }
 }
+
+export = Experiment;

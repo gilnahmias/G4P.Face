@@ -27,3 +27,5 @@ class Question {
         return this._introTexts;
     }
 }
+
+export = Question;

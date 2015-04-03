@@ -1,3 +1,5 @@
+///<reference path="./Question.ts" />
+
 class ExperimentTemplate {
     private _id:string;
     private _name:string;
@@ -21,3 +23,5 @@ class ExperimentTemplate {
         return this._questions;
     }
 }
+
+export = ExperimentTemplate;

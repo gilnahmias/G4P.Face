@@ -38,5 +38,6 @@ class Browser {
     get internalIP(){
         return this._internalIP;
     }
-
 }
+
+export = Browser;

@@ -71,6 +71,7 @@
     "url-loader": "^0.5.5",
     "webpack": "^1.4.3",
     "webpack-dev-server": "^1.6.5",
+    "typescript-loader": "1.x",
     "gulp-typescript": "2.x",
     "merge2": "0.x"
   }

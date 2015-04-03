@@ -1,9 +1,10 @@
 ﻿var express = require('express');
 var router = express.Router();
+//var Experiment = require('../models/Experiment.ts');
 
 /* GET experiment listing. */
 router.get('/', function (req, res) {
-    res.send('respond with all experiment IDs');
+    res.send(new Experiment());
 });
 
 router.get('/:id', function (req, res) {

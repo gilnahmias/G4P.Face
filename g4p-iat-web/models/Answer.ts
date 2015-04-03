@@ -52,3 +52,5 @@ class Answer {
         return this._experimentId;
     }
 }
+
+export = Answer;
