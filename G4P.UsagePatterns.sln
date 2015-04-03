@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G4P.Face.Models", "G4P.Face
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "G4P.Face.Repositories", "G4P.Face.Repositories\G4P.Face.Repositories.csproj", "{19CE0DC6-3213-4B7F-A524-C33A5DC32F57}"
 EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "g4p-iat-web", "g4p-iat-web\g4p-iat-web.njsproj", "{F451A2B2-B15D-439C-AD3E-5C4DDCBF8913}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{19CE0DC6-3213-4B7F-A524-C33A5DC32F57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19CE0DC6-3213-4B7F-A524-C33A5DC32F57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19CE0DC6-3213-4B7F-A524-C33A5DC32F57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F451A2B2-B15D-439C-AD3E-5C4DDCBF8913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F451A2B2-B15D-439C-AD3E-5C4DDCBF8913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F451A2B2-B15D-439C-AD3E-5C4DDCBF8913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F451A2B2-B15D-439C-AD3E-5C4DDCBF8913}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
