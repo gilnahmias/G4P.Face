@@ -16,14 +16,17 @@ module.exports = function (release) {
   return {
     output: {
       path: './build/',
-      filename: 'app.js',
+      filename: '[name].js',
       publicPatch: './build/'
     },
 
     cache: !release,
     debug: !release,
     devtool: false,
-    entry: './src/App.jsx',
+    entry: {
+      app: './src/App.jsx',
+      models: './models/models.ts'
+    },
 
     stats: {
       colors: true,

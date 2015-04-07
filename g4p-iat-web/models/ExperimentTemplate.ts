@@ -1,4 +1,4 @@
-///<reference path="./Question.ts" />
+import Question = require ('./Question');
 
 class ExperimentTemplate {
     private _id:string;

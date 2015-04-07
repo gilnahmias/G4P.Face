@@ -7,13 +7,6 @@
 var React = require('react');
 var {Routes, Route} = require('react-router');
 
-var Answer = require ('../models/Answer.ts');
-var Browser = require ('../models/Browser.ts');
-var Experiment = require ('../models/Experiment.ts');
-var ExperimentTemplate = require ('../models/ExperimentTemplate.ts');
-var Question = require ('../models/Question.ts');
-var User = require ('../models/User.ts');
-
 // Export React so the dev tools can find it
 (window !== window.top ? window.top : window).React = React;
 

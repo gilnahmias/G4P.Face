@@ -39,5 +39,3 @@ class Sprite {
         return this._cols;
     }
 }
-
-export = Sprite;

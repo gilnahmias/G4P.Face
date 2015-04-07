@@ -52,25 +52,31 @@ gulp.task('default', ['serve']);
 
 // Clean up
 gulp.task('clean', del.bind(null, [DEST]));
-
+var concat = require('gulp-concat');
+var sourcemaps = require('gulp-sourcemaps');
 var ts = require('gulp-typescript');
 var merge = require('merge2');
  
 var tsProject = ts.createProject({
-    declarationFiles: true,
+    declarationFiles: false,
     noExternalResolve: false,
     target: 'ES5',
-    module: 'CommonJS'
+    module: 'CommonJS',
+    sortOutput: true
 });
  
 gulp.task('models', function() {
     var tsResult = gulp.src('models/*.ts')
+                    .pipe(sourcemaps.init())
                     .pipe(ts(tsProject));
  
     return merge([ // Merge the two output streams, so this task is finished when the IO of both operations are done.  
-        tsResult.dts.pipe(gulp.dest('build/models/definitions')),
+        //tsResult.dts.pipe(gulp.dest('build/models/definitions')),
         tsResult.js.pipe(gulp.dest('build/models/js'))
-    ]);
+    ])
+    .pipe(concat('models.js')) // You can use other plugins that also support gulp-sourcemaps 
+        .pipe(sourcemaps.write()) // Now the sourcemaps are added to the .js file 
+        .pipe(gulp.dest('build/models'));
 });
 
 // 3rd party libraries
@@ -164,7 +170,7 @@ gulp.task('bundle', function (cb) {
 
 // Build the app from source code
 gulp.task('build', ['clean'], function (cb) {
-  runSequence(['vendor', 'assets', 'images', 'pages', 'styles', 'bundle'], cb);
+  runSequence(['models', 'vendor', 'assets', 'images', 'pages', 'styles', 'bundle'], cb);
 });
 
 // Launch a lightweight HTTP Server

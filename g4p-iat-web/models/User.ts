@@ -9,5 +9,3 @@ class User {
         return this._id;
     }
 }
-
-export = User;
