@@ -1,7 +1,11 @@
+import Question = require ('../models/Question');
+declare var $;
+
 class QuestionRepository {
     
-    save() {
+    save(question:Question) {
         alert ('1111111111');
+        $.post( "questions/", question);
     }
 
     notify(){
