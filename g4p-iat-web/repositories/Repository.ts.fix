@@ -1,0 +1,20 @@
+import QuestionRepository = require ('./QuestionRepository');
+
+class Repository {
+    private static _default = new Repository();
+    private _questionRepository:QuestionRepository = null;
+
+    constructor() {
+         this._questionRepository = new QuestionRepository();
+    }
+
+    static Default(){
+        return Repository._default;
+    }
+
+    get questions() {
+        return this._questionRepository;
+    }
+}
+
+export = Repository;

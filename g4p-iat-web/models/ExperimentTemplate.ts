@@ -1,4 +1,4 @@
-import Question = require ('./Question');
+import Question = require ('Question');
 
 class ExperimentTemplate {
     private _id:string;

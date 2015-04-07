@@ -1,6 +1,6 @@
 ﻿var express = require('express');
 var router = express.Router();
-var Experiment = require('../build/models/js/Experiment.js');
+var Experiment = require('../build/js/models/Experiment.js');
 
 /* GET experiment listing. */
 router.get('/', function (req, res) {

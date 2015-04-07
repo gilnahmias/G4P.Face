@@ -59,24 +59,24 @@ var merge = require('merge2');
  
 var tsProject = ts.createProject({
     declarationFiles: false,
-    noExternalResolve: false,
+    noExternalResolve: true,
     target: 'ES5',
     module: 'CommonJS',
     sortOutput: true
 });
  
 gulp.task('models', function() {
-    var tsResult = gulp.src('models/*.ts')
+    var tsResult = gulp.src('{models,repositories}/*.ts')
                     .pipe(sourcemaps.init())
                     .pipe(ts(tsProject));
  
     return merge([ // Merge the two output streams, so this task is finished when the IO of both operations are done.  
         //tsResult.dts.pipe(gulp.dest('build/models/definitions')),
-        tsResult.js.pipe(gulp.dest('build/models/js'))
+        tsResult.js.pipe(gulp.dest('build/js'))
     ])
     .pipe(concat('models.js')) // You can use other plugins that also support gulp-sourcemaps 
         .pipe(sourcemaps.write()) // Now the sourcemaps are added to the .js file 
-        .pipe(gulp.dest('build/models'));
+        .pipe(gulp.dest('build/js'));
 });
 
 // 3rd party libraries
