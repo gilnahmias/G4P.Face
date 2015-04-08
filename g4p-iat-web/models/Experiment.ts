@@ -1,4 +1,4 @@
-﻿import ExperimentTemplate = require ('ExperimentTemplate');
+﻿import ExperimentTemplate = require ('./ExperimentTemplate');
 
 class Experiment {
     private _id:string;
@@ -13,6 +13,16 @@ class Experiment {
         this._tags = tags;
         this._startTime = startTime;
         this._template = template;
+    }
+
+    static fromJS(exp){
+        return new Experiment(
+            exp._id,
+            exp._facilitators,
+            exp._tags,
+            exp._startTime,
+            ExperimentTemplate.fromJS(exp._template)
+        );
     }
 
     get id(){
@@ -34,6 +44,8 @@ class Experiment {
     get template(){
         return this._template;
     }
+
+
 }
 
 export = Experiment;

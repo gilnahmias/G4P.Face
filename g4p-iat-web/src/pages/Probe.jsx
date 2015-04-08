@@ -9,11 +9,14 @@ var ExperimentStore = require('../stores/ExperimentStore.js');
 var Probe = require ('../components/Probe.jsx');
 
 var getState = function(){
-    return {
-        probe: ExperimentStore.getCurrentProbe(),
+    debugger;
+    var state = {
+        probe: ExperimentStore.currentQuestion(),
         canMovePrev: ExperimentStore.canMovePrev(),
         canMoveNext: ExperimentStore.canMoveNext()
     };
+
+    return state;
 };
 
 var ProbePage = React.createClass({

@@ -1,4 +1,4 @@
-import Question = require ('Question');
+import Question = require ('./Question');
 
 class ExperimentTemplate {
     private _id:string;
@@ -9,6 +9,18 @@ class ExperimentTemplate {
         this._id = id;
         this._name = name;
         this._questions = questions;
+    }
+
+    static fromJS(template){
+        var questions = template._questions.map(function(question){
+            return Question.fromJS(question);
+        });
+
+        return new ExperimentTemplate(
+            template._id,
+            template._name,
+            questions
+        );
     }
 
     get id(){

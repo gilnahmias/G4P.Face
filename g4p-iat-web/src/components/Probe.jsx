@@ -78,7 +78,7 @@ var Probe = React.createClass({
     render() {
         var canMoveNext = this.props.canMoveNext;
         var canMovePrev = this.props.canMovePrev;
-        var banner = isBannerVisible(this.props.probe.getState()) ?
+        var banner = isBannerVisible(this.props.probe.state) ?
              <Banner>
                 <div style={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'flex-start'}}>
                     <span style={{flexBasis: '10%'}} onClick={this.handlePrev}>{canMovePrev ? (<a href="#"><i className="glyphicon glyphicon-circle-arrow-left"></i></a>) : ""}</span>
@@ -88,7 +88,7 @@ var Probe = React.createClass({
              </Banner> :
              "";
 
-        var sprite = this.props.probe.getSprite();
+        var sprite = this.props.probe.sprite || {}; // TODO: default to Sprite?
 
         var containerStyle = {
             display: 'flex',
@@ -105,13 +105,13 @@ var Probe = React.createClass({
                 <div style={containerStyle}>
                     <div style={centerStyle}>
                         <SpriteFrame
-                            imageUrl={sprite.getImageUrl()} 
-                            width={sprite.getWidth()} 
-                            height={sprite.getHeight()} 
-                            rows={sprite.getRows()} 
-                            cols={sprite.getCols()} 
+                            imageUrl={sprite.url} 
+                            width={sprite.width} 
+                            height={sprite.height} 
+                            rows={sprite.rows} 
+                            cols={sprite.cols} 
                             frame={this.state.frame}
-                            totalFrames={sprite.getTotalFrames()} 
+                            totalFrames={sprite.frames} 
                             onLoad={this.onSpriteLoad} />
                     </div>
                 </div>

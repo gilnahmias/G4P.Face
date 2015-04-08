@@ -8,6 +8,7 @@ var React = require('react');
 var Strings = require ('../strings/Experiment-en.js').startScreen;
 var ExperimentStore = require ('../stores/ExperimentStore.js');
 var ExperimentActions = require ('../actions/ExperimentActions.js');
+var ExperimentActions2 = require ('../actions/ExperimentActions2.js');
 var {Link} = require('react-router');
 
 var getState = function(){
@@ -37,7 +38,8 @@ var StartExperiment = React.createClass({
         var userId = this.refs.userId.getDOMNode().value;
 
         if (this.state.userIdValid){
-            ExperimentActions.startExperiment(userId);
+            ExperimentActions2.loadExperiment();
+//            ExperimentActions.startExperiment(userId);
         }
 
         return this.state.userIdValid;

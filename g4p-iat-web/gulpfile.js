@@ -66,7 +66,8 @@ var tsProject = ts.createProject({
 });
  
 gulp.task('models', function() {
-    var tsResult = gulp.src('{models,repositories}/*.ts')
+    src.models = '{models,repositories}/*.ts';
+    var tsResult = gulp.src(src.models)
                     .pipe(sourcemaps.init())
                     .pipe(ts(tsProject));
  
@@ -170,7 +171,7 @@ gulp.task('bundle', function (cb) {
 
 // Build the app from source code
 gulp.task('build', ['clean'], function (cb) {
-  runSequence(['models', 'vendor', 'assets', 'images', 'pages', 'styles', 'bundle'], cb);
+  runSequence('models',['vendor', 'assets', 'images', 'pages', 'styles'],'bundle', cb);
 });
 
 // Launch a lightweight HTTP Server
@@ -193,6 +194,7 @@ gulp.task('serve', function (cb) {
     gulp.watch(src.assets, ['assets']);
     gulp.watch(src.images, ['images']);
     gulp.watch(src.pages, ['pages']);
+    gulp.watch(src.models, ['models']);
     gulp.watch(src.styles, ['styles']);
     gulp.watch(DEST + '/**/*.*', function (file) {
       browserSync.reload(path.relative(__dirname, file.path));

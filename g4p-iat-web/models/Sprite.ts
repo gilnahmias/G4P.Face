@@ -5,14 +5,16 @@ class Sprite {
     private _height:number;
     private _rows:number;
     private _cols:number;
+    private _frames:number;
 
-    constructor(id:string, url:string, width:number, height:number, rows:number, cols:number) {
+    constructor(id:string, url:string, width:number, height:number, rows:number, cols:number, frames:number) {
         this._id = id;
         this._url = url;
         this._width = width;
         this._height = height;
         this._rows = rows;
         this._cols = cols;
+        this._frames = frames;
     }
 
     get id():string{
@@ -38,4 +40,10 @@ class Sprite {
     get cols():number{
         return this._cols;
     }
+
+    get frames():number {
+        return this._frames;
+    }
 }
+
+export = Sprite;

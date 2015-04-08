@@ -1,9 +1,16 @@
 var biff = require ('../dispatcher/biff');
-var Sprite = require ('../models/Sprite');
 var Probe = require ('../models/Probe');
-var Experiment = require ('../models/Experiment');
+//var Experiment = require ('../models/Experiment');
+
+var Sprite = require ('../../build/js/models/Sprite');
+var Question = require ('../../build/js/models/Question');
+var QuestionList = require ('../../build/js/models/QuestionList');
+var Answer = require ('../../build/js/models/Answer');
+var Experiment = require ('../../build/js/models/Experiment');
+
 
 var _experiment = new Experiment();
+_questionList = new QuestionList();
 
 var sprites = [
     new Sprite("sprites/15x40/sprite-arab-angry-smile-small.jpg", 7680, 15360, 40, 15, 600),
@@ -17,34 +24,42 @@ var sprites = [
 ];
 
 var createNewProbe = function(id){
+    /*
     var sprite = sprites[id];
     var probe = new Probe(sprite, id);
     _experiment.probes().add(probe);
-    return probe;
+    return probe;*/
 };
 
-var getCurrentProbe = function(){
-    return _experiment.probes().getCurrentProbe();
+var currentQuestion = function(){/*
+    return _experiment.probes().getCurrentProbe();*/
+    return _questionList.current;
 };
 
-createNewProbe(5);
-createNewProbe(2);
 
 var ExperimentStore = biff.createStore({
     getProbes: function(){
-        return _experiment.probes();
+        return _questionList;
     },
     canMoveNext: function(){
-        return _experiment.probes().canMoveNext();
+        return _questionList.canMoveNext();
     },
     canMovePrev: function(){
-        return _experiment.probes().canMovePrev();
+        return _questionList.canMovePrev();
     },
-    getCurrentProbe: getCurrentProbe,
+    currentQuestion: currentQuestion,
 }, function (payload){
     switch(payload.actionType){
+        case 'LOAD_EXPERIMENT':
+            debugger;
+            _experiment = payload.experiment;
+            _questionList = new QuestionList(_experiment.template.questions);
+            this.emitChange();
+            break;
+
         case 'START_EXPERIMENT':
             _experiment.userId = payload.userId;
+            this.emitChange();
              break;
 
         case 'START_PROBE':
