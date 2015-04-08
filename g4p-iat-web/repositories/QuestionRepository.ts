@@ -11,6 +11,7 @@ class QuestionRepository {
     notify(){
         alert ("no teeeee fy");
     }
+
 }
 
 export = QuestionRepository;

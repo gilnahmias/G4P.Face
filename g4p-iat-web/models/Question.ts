@@ -20,6 +20,7 @@ class Question {
         this._spriteId = spriteId;
         this._introImageUrl = introImageUrl;
         this._introTexts = introTexts;
+        this._sprite = new Sprite("sp3", "sprites/15x40/sprite-arab-angry-smile-small.jpg", 7680, 15360, 40, 15, 600);
     }
 
     static fromJS(question){
@@ -40,7 +41,12 @@ class Question {
     }
 
     get sprite(){
-        return new Sprite(); // TODO: deserialize
+        return this._sprite;
+    }
+
+    set sprite(sprite){
+        // TODO - repo
+        this._sprite = sprite;
     }
 
     get introImageUrl(){
