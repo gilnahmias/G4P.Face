@@ -14,6 +14,6 @@ class SpriteRepository{
             "sp8": new Sprite("sp8", "sprites/15x40/sprite-jew-smile-angry-small.jpg", 7680, 15360, 40, 15, 600)
         };
 
-        return sprites(spriteId);
+        return sprites[spriteId];
     }
 }
