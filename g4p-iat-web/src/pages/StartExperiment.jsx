@@ -8,7 +8,6 @@ var React = require('react');
 var Strings = require ('../strings/Experiment-en.js').startScreen;
 var ExperimentStore = require ('../stores/ExperimentStore.js');
 var ExperimentActions = require ('../actions/ExperimentActions.js');
-var ExperimentActions2 = require ('../actions/ExperimentActions2.js');
 var {Link} = require('react-router');
 
 var getState = function(){
@@ -38,8 +37,8 @@ var StartExperiment = React.createClass({
         var userId = this.refs.userId.getDOMNode().value;
 
         if (this.state.userIdValid){
-            ExperimentActions2.loadExperiment();
-//            ExperimentActions.startExperiment(userId);
+            ExperimentActions.loadExperiment();
+            ExperimentActions.startExperiment(userId);
         }
 
         return this.state.userIdValid;
@@ -84,7 +83,7 @@ var StartExperiment = React.createClass({
                         <div className="col-md-offset-4 col-md-6 col-xs-12">
                             <h1>{Strings.whoAreYou}</h1>
                             <div><input className="form-control" style={idTextboxStyle} ref="userId" type="email" placeholder={Strings.insertYourId} onChange={this.handleIdChange} onKeyUp={this.handleKeyUp} autofocus /></div>
-                            <Link ref="link" to="probe" className={buttonClass} style={submitButtonStyle} onClick={this.handleButtonClick}>{buttonTitle}</Link>
+                            <Link ref="link" to="question" className={buttonClass} style={submitButtonStyle} onClick={this.handleButtonClick}>{buttonTitle}</Link>
                         </div>
                     </div>
                 </div>);

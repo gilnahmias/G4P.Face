@@ -12,8 +12,8 @@ class Repository {
         return Repository._default;
     }
 
-    get questions() {
-        return this._questionRepository;
+    get one() {
+        return this._questionRepository.return1();
     }
 }
 

@@ -17,3 +17,6 @@ class SpriteRepository{
         return sprites[spriteId];
     }
 }
+
+
+export = SpriteRepository;

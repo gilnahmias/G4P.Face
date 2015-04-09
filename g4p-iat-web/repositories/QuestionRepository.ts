@@ -12,6 +12,10 @@ class QuestionRepository {
         alert ("no teeeee fy");
     }
 
+    return1(){
+        return 1;
+    }
+
 }
 
 export = QuestionRepository;

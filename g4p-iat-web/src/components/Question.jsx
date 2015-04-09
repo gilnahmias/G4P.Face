@@ -5,10 +5,10 @@
  'use strict';
 
  var React = require('react');
- var Banner = require ('./probe/Banner.jsx');
+ var Banner = require ('./question/Banner.jsx');
  var SpriteFrame = require ('./SpriteFrame.jsx');
- var ProbeActions = require('../actions/ProbeActions.js');
- var ProbeListActions = require('../actions/ProbeListActions.js');
+ var QuestionActions = require('../actions/QuestionActions.js');
+ var QuestionListActions = require('../actions/QuestionListActions.js');
 
  var keys = { Space: 32 };
 
@@ -16,12 +16,12 @@ var isBannerVisible = function(state){
     return state !== "running";
 };
 
-var Probe = React.createClass({
+var Question = React.createClass({
     getInitialState: function() {
         return {banner: "Space to Start", frame: 0};
     },
     componentWillReceiveProps: function(nextProps){
-        var question = nextProps.probe;
+        var question = nextProps.question;
         var state = question.state;
         var elapsed = question.getElapsed();
         var frame = question.frame;
@@ -52,12 +52,12 @@ var Probe = React.createClass({
     },
     handleGlobalKeyUp : function(e){
         if (e.which === keys.Space){
-            ProbeActions.toggleProbe(this.countdownChanged, this.frameChanged);
+            QuestionActions.toggleQuestion(this.countdownChanged, this.frameChanged);
         }
     },
     countdownChanged: function (secondsToStart){
         if (secondsToStart === 0){
-            ProbeActions.startProbe(this.frameChanged);
+            QuestionActions.startQuestion(this.frameChanged);
         }
         else {
             this.setState({ banner: "We will start in " + secondsToStart + " seconds" });
@@ -67,10 +67,10 @@ var Probe = React.createClass({
         this.setState({frame: frame});
     },
     handlePrev: function(){
-        ProbeListActions.prev();
+        QuestionListActions.prev();
     },
     handleNext: function(){
-        ProbeListActions.next();
+        QuestionListActions.next();
     },
     onSpriteLoad: function(args){
         console.log ("LOADed in " + args.loadTime + " ms");
@@ -78,7 +78,7 @@ var Probe = React.createClass({
     render() {
         var canMoveNext = this.props.canMoveNext;
         var canMovePrev = this.props.canMovePrev;
-        var banner = isBannerVisible(this.props.probe.state) ?
+        var banner = isBannerVisible(this.props.question.state) ?
              <Banner>
                 <div style={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'flex-start'}}>
                     <span style={{flexBasis: '10%'}} onClick={this.handlePrev}>{canMovePrev ? (<a href="#"><i className="glyphicon glyphicon-circle-arrow-left"></i></a>) : ""}</span>
@@ -88,7 +88,7 @@ var Probe = React.createClass({
              </Banner> :
              "";
 
-        var sprite = this.props.probe.sprite || {}; // TODO: default to Sprite?
+        var sprite = this.props.question.sprite || {}; // TODO: default to Sprite?
 
         var containerStyle = {
             display: 'flex',
@@ -120,4 +120,4 @@ var Probe = React.createClass({
     }
 });
 
-module.exports = Probe;
+module.exports = Question;

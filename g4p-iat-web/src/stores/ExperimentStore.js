@@ -28,9 +28,6 @@ var currentQuestion = function(){
 };
 
 var ExperimentStore = biff.createStore({
-    getProbes: function(){
-        return _questionList;
-    },
     canMoveNext: function(){
         return _questionList.canMoveNext();
     },
@@ -51,28 +48,28 @@ var ExperimentStore = biff.createStore({
             this.emitChange();
              break;
 
-        case 'START_PROBE':
+        case 'START_QUESTION':
             currentQuestion().start(payload.animationCallback);
             this.emitChange();
             break;
 
-        case 'STOP_PROBE':
+        case 'STOP_QUESTION':
             currentQuestion().stop();
             this.emitChange();
             break;
 
-        case 'TOGGLE_PROBE':
+        case 'TOGGLE_QUESTION':
             currentQuestion().toggle(payload.countdownCallback, payload.animationCallback);
             this.emitChange();
             break;
 
-        case 'NEXT_PROBE':
+        case 'NEXT_QUESTION':
             _questionList.next();
             console.log(currentQuestion().id);
             this.emitChange();
             break;
 
-        case 'PREV_PROBE':
+        case 'PREV_QUESTION':
             _questionList.prev();
             console.log(currentQuestion().id);
             this.emitChange();

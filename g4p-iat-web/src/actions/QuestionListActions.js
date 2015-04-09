@@ -1,16 +1,16 @@
 var biff = require('../dispatcher/biff');
 
-var ProbeListActions = biff.createActions({
+var QuestionListActions = biff.createActions({
     next: function() {
         this.dispatch({
-          actionType: 'NEXT_PROBE',
+          actionType: 'NEXT_QUESTION',
       });
     },
     prev: function() {
         this.dispatch({
-          actionType: 'PREV_PROBE',
+          actionType: 'PREV_QUESTION',
       });
     },
 });
 
-module.exports = ProbeListActions;
+module.exports = QuestionListActions;

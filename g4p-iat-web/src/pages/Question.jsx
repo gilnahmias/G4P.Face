@@ -6,11 +6,11 @@
 
 var React = require('react');
 var ExperimentStore = require('../stores/ExperimentStore.js');
-var Probe = require ('../components/Probe.jsx');
+var Question = require ('../components/Question.jsx');
 
 var getState = function(){
     var state = {
-        probe: ExperimentStore.currentQuestion(),
+        question: ExperimentStore.currentQuestion(),
         canMovePrev: ExperimentStore.canMovePrev(),
         canMoveNext: ExperimentStore.canMoveNext()
     };
@@ -18,18 +18,18 @@ var getState = function(){
     return state;
 };
 
-var ProbePage = React.createClass({
+var QuestionPage = React.createClass({
     mixins: [ExperimentStore.mixin],
     getInitialState: function() { return getState(); },
     storeDidChange: function() { this.setState(getState()); },
     render() {
         return (<div>
-                    <Probe 
-                        probe={this.state.probe} 
+                    <Question 
+                        question={this.state.question} 
                         canMoveNext={this.state.canMoveNext}
                         canMovePrev={this.state.canMovePrev} />
                 </div>);
     }
 });
 
-module.exports = ProbePage;
+module.exports = QuestionPage;

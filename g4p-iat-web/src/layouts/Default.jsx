@@ -20,7 +20,7 @@ var DefaultLayout = React.createClass({
               {' © Games for peace • '}
               <Link to="home">Home</Link> {' • '}
               <Link to="privacy">Privacy</Link>{' • '}
-              <Link to="probe">Probe</Link>
+              <Link to="question">Question</Link>
             </p>
           </div>
         </div>
