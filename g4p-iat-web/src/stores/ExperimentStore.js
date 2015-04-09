@@ -23,19 +23,9 @@ var sprites = [
     new Sprite("sprites/15x40/sprite-jew-smile-angry-small.jpg", 7680, 15360, 40, 15, 600)
 ];
 
-var createNewProbe = function(id){
-    /*
-    var sprite = sprites[id];
-    var probe = new Probe(sprite, id);
-    _experiment.probes().add(probe);
-    return probe;*/
+var currentQuestion = function(){
+    return _questionList.getCurrent();
 };
-
-var currentQuestion = function(){/*
-    return _experiment.probes().getCurrentProbe();*/
-    return _questionList.current;
-};
-
 
 var ExperimentStore = biff.createStore({
     getProbes: function(){
@@ -51,7 +41,6 @@ var ExperimentStore = biff.createStore({
 }, function (payload){
     switch(payload.actionType){
         case 'LOAD_EXPERIMENT':
-            debugger;
             _experiment = payload.experiment;
             _questionList = new QuestionList(_experiment.template.questions);
             this.emitChange();
@@ -63,32 +52,29 @@ var ExperimentStore = biff.createStore({
              break;
 
         case 'START_PROBE':
-            var probe = getCurrentProbe();
-            probe.start(payload.animationCallback);
+            currentQuestion().start(payload.animationCallback);
             this.emitChange();
             break;
 
         case 'STOP_PROBE':
-            var probe = getCurrentProbe();
-            probe.stop();
+            currentQuestion().stop();
             this.emitChange();
             break;
 
         case 'TOGGLE_PROBE':
-            var probe = getCurrentProbe();
-            probe.toggle(payload.countdownCallback, payload.animationCallback);
+            currentQuestion().toggle(payload.countdownCallback, payload.animationCallback);
             this.emitChange();
             break;
 
         case 'NEXT_PROBE':
-            _experiment.probes().next();
-            console.log(_experiment.probes().getCurrentProbe().getId());
+            _questionList.next();
+            console.log(currentQuestion().id);
             this.emitChange();
             break;
 
         case 'PREV_PROBE':
-            _experiment.probes().prev();
-            console.log(_experiment.probes().getCurrentProbe().getId());
+            _questionList.prev();
+            console.log(currentQuestion().id);
             this.emitChange();
             break;
     }

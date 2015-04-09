@@ -32,7 +32,7 @@ var containerLayout = {
 var StartExperiment = React.createClass({
     mixins: [ExperimentStore.mixin],
     getInitialState: function() { return getState(); },
-    //storeDidChange: function() { this.setState(getState()); },
+    storeDidChange: function() { /*this.setState(getState());*/ },
     
     handleButtonClick() {
         var userId = this.refs.userId.getDOMNode().value;

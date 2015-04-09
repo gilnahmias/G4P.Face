@@ -21,11 +21,11 @@ var Probe = React.createClass({
         return {banner: "Space to Start", frame: 0};
     },
     componentWillReceiveProps: function(nextProps){
-        var probe = nextProps.probe;
-        var state = probe.getState();
-        var elapsed = probe.elapsed();
-        var frame = probe.getFrame();
-        var totalFrames = probe.getSprite().getTotalFrames();
+        var question = nextProps.probe;
+        var state = question.state;
+        var elapsed = question.getElapsed();
+        var frame = question.frame;
+        var totalFrames = question.sprite.frames;
 
         if (state === "done"){
             var banner = "It took you " + elapsed.toFixed(1) + "ms (frame " + frame + "/" + totalFrames + ").";

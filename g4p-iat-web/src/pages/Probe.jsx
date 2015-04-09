@@ -9,7 +9,6 @@ var ExperimentStore = require('../stores/ExperimentStore.js');
 var Probe = require ('../components/Probe.jsx');
 
 var getState = function(){
-    debugger;
     var state = {
         probe: ExperimentStore.currentQuestion(),
         canMovePrev: ExperimentStore.canMovePrev(),

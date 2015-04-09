@@ -57,6 +57,10 @@ class Question {
         return this._introTexts;
     }
 
+    get frame(){
+        return this._frame;
+    }
+
     get state(){
         return this._state;
     }
@@ -108,7 +112,7 @@ class Question {
         //this.save();
     }
 
-    elapsed(){
+    getElapsed(){
         if (this._state === "running"){
             return performance.now() - this._startedAt;
         }

@@ -7,8 +7,9 @@ class QuestionList {
     private _currentIndex = -1;
 
     constructor(questions?:Array<Question>) {
+        this._questions = [];
+
         if (!questions){
-            this._questions = [];
             return;
         }
 
@@ -18,8 +19,10 @@ class QuestionList {
     }
 
     add(question: Question){
+        var self = this;
         question.onStateChanged = function(){
-            if (this.areAllStates("done") && typeof this._onDone === "function"){
+            if (self.areAllStates("done") && typeof this._onDone === "function"){
+                debugger;
                 this._onDone.call(this);
             }
         };
@@ -27,7 +30,7 @@ class QuestionList {
         this._questions.push(question);
     }
 
-    current(){
+    getCurrent(){
         if (this._currentIndex === -1 && this._questions.length > 0){
             this._currentIndex = 0;
         }

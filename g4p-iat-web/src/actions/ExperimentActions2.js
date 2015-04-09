@@ -5,7 +5,6 @@ var _repo = new ExperimentRepository();
 
 var ExperimentActions2 = biff.createActions({
     loadExperiment: function() {
-        debugger;
         var dispatch = this.dispatch;
 
         _repo.fetch().then(function(experiment){
