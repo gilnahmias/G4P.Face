@@ -12,7 +12,9 @@ var getState = function(){
     var state = {
         question: ExperimentStore.currentQuestion(),
         canMovePrev: ExperimentStore.canMovePrev(),
-        canMoveNext: ExperimentStore.canMoveNext()
+        canMoveNext: ExperimentStore.canMoveNext(),
+        experimentId: ExperimentStore.getExperimentId(),
+        userId: ExperimentStore.getUserId()
     };
 
     return state;
@@ -23,11 +25,17 @@ var QuestionPage = React.createClass({
     getInitialState: function() { return getState(); },
     storeDidChange: function() { this.setState(getState()); },
     render() {
+        var state = this.state;
+
         return (<div>
                     <Question 
-                        question={this.state.question} 
-                        canMoveNext={this.state.canMoveNext}
-                        canMovePrev={this.state.canMovePrev} />
+                        question={state.question} 
+                        canMoveNext={state.canMoveNext}
+                        canMovePrev={state.canMovePrev}
+                        experimentId={state.experimentId}
+                        userId={state.userId} />
+                        }
+                        }
                 </div>);
     }
 });

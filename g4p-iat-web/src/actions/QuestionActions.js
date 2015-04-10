@@ -13,7 +13,7 @@ var QuestionActions = biff.createActions({
           actionType: 'START_QUESTION',
           animationCallback: animationCallback
       });
-    },
+    }
 });
 
 module.exports = QuestionActions;

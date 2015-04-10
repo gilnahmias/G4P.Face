@@ -9,6 +9,7 @@
  var Loader = require ('./Loader.jsx');
  var SpriteFrame = require ('./SpriteFrame.jsx');
  var QuestionActions = require('../actions/QuestionActions.js');
+ var AnswerActions = require('../actions/AnswerActions.js');
  var QuestionListActions = require('../actions/QuestionListActions.js');
 
  var keys = { Space: 32 };
@@ -54,6 +55,11 @@ var Question = React.createClass({
     handleGlobalKeyUp : function(e){
         if (e.which === keys.Space){
             QuestionActions.toggleQuestion(this.countdownChanged, this.frameChanged);
+
+            var question = this.props.question;
+            if (question.state === "done"){
+                AnswerActions.saveAnswer(question, this.props.experimentId, this.props.userId);
+            }
         }
     },
     countdownChanged: function (secondsToStart){

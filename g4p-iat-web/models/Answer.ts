@@ -1,3 +1,5 @@
+import Question = require ('./Question');
+
 class Answer {
     private _id:string;
     private _timestamp: Date;
@@ -18,6 +20,23 @@ class Answer {
         this._machineId = machineId;
         this._questionId = questionId;
         this._experimentId = experimentId;
+    }
+
+    static fromQuestion (question:Question, experimentId, userId){
+        var createId = function(){
+            return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1)
+        };
+
+        return new Answer (
+            createId(),
+            new Date(),
+            question.frame,
+            question.getElapsed(),
+            userId,
+            "machine-id",
+            question.id,
+            experimentId
+        );
     }
 
     get id():string{

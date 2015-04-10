@@ -35,6 +35,12 @@ var ExperimentStore = biff.createStore({
         return _questionList.canMovePrev();
     },
     currentQuestion: currentQuestion,
+    getExperimentId: function(){
+        return _experiment.id;
+    },
+    getUserId: function(){
+        return _experiment.userId;
+    }
 }, function (payload){
     switch(payload.actionType){
         case 'LOAD_EXPERIMENT':
