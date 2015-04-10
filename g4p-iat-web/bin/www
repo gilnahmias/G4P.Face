@@ -1,19 +1,6 @@
 ﻿#!/usr/bin/env node
 var debug = require('debug')('g4p_iat');
 var app = require('../app');
-var spawn = require('child_process');
-
-Object.keys(spawn).forEach(function(key){
-	console.log (key);
-});
-spawn.exec('cmd compile_static.cmd',
-  function (error, stdout, stderr) {
-    console.log('stdout: ' + stdout);
-    console.log('stderr: ' + stderr);
-    if (error !== null) {
-      console.log('exec error: ' + error);
-    }
-});
 
 app.set('port', process.env.PORT || 3000);
 

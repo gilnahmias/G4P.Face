@@ -6,10 +6,10 @@ var Question = require('../build/js/models/Question.js');
 var Sprite = require('../build/js/models/Sprite.js');
 
 var questions = [
-    new Question("q1", "s2", "", ""),
-    new Question("q1", "s4", "", ""),
-    new Question("q1", "s7", "", ""),
-    new Question("q1", "s8", "", "")
+    new Question("q1", "s2", "", "מוחמד"),
+    new Question("q1", "s4", "", "מוחמוד"),
+    new Question("q1", "s7", "", "אבי"),
+    new Question("q1", "s8", "", "אבי")
 ];
 
 var template = new ExperimentTeamplate("et1", "test", questions);

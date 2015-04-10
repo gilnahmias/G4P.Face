@@ -88,15 +88,20 @@ var Question = React.createClass({
              </Banner> :
              "";
 
+        var introText = this.props.question.introText;
         var sprite = this.props.question.sprite || {}; // TODO: default to Sprite?
+
 
         var containerStyle = {
             display: 'flex',
         };
 
         var centerStyle = {
-            margin: 'auto'
+            margin: 'auto',
+            textAlign: 'center'
         };
+
+        console.log ("question", this.props.question);
 
         return (
           <div>
@@ -113,7 +118,13 @@ var Question = React.createClass({
                             frame={this.state.frame}
                             totalFrames={sprite.frames} 
                             onLoad={this.onSpriteLoad} />
+
+                        <h1>
+                            {introText}
+                        </h1>
                     </div>
+
+       
                 </div>
           </div>
         );

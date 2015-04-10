@@ -7,7 +7,7 @@ class Question {
     private _spriteId:string;
     private _sprite:Sprite;
     private _introImageUrl:string;
-    private _introTexts;
+    private _introText;
     private _state:string = "not started"; // "countdown", "running", "done"
     private _onStateChanged = null;
     private _frame:number = 0;
@@ -15,11 +15,11 @@ class Question {
     private _startedAt = 0;
     private _endedAt = 0;
 
-    constructor(id:string, spriteId:string, introImageUrl:string, introTexts) {
+    constructor(id:string, spriteId:string, introImageUrl:string, introText) {
         this._id = id;
         this._spriteId = spriteId;
         this._introImageUrl = introImageUrl;
-        this._introTexts = introTexts;
+        this._introText = introText;
         this._sprite = new Sprite("sp3", "sprites/15x40/sprite-arab-angry-smile-small.jpg", 7680, 15360, 40, 15, 600);
     }
 
@@ -28,7 +28,7 @@ class Question {
             question._id,
             question._spriteId,
             question._introImageUrl,
-            question._introTexts
+            question._introText
         );
     }
 
@@ -53,8 +53,8 @@ class Question {
         return this._introImageUrl;
     }
 
-    get introTexts(){
-        return this._introTexts;
+    get introText(){
+        return this._introText;
     }
 
     get frame(){
