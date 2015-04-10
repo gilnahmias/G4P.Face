@@ -6,6 +6,7 @@
 
  var React = require('react');
  var Banner = require ('./question/Banner.jsx');
+ var Loader = require ('./Loader.jsx');
  var SpriteFrame = require ('./SpriteFrame.jsx');
  var QuestionActions = require('../actions/QuestionActions.js');
  var QuestionListActions = require('../actions/QuestionListActions.js');
@@ -18,7 +19,7 @@ var isBannerVisible = function(state){
 
 var Question = React.createClass({
     getInitialState: function() {
-        return {banner: "Space to Start", frame: 0};
+        return {banner: "Space to Start", frame: 0, spriteLoaded: false};
     },
     componentWillReceiveProps: function(nextProps){
         var question = nextProps.question;
@@ -68,12 +69,15 @@ var Question = React.createClass({
     },
     handlePrev: function(){
         QuestionListActions.prev();
+        this.setState({spriteLoaded: false});
     },
     handleNext: function(){
         QuestionListActions.next();
+        this.setState({spriteLoaded: false});
     },
     onSpriteLoad: function(args){
-        console.log ("LOADed in " + args.loadTime + " ms");
+        console.log ("Sprite loaded in " + args.loadTime + " ms");
+        this.setState({spriteLoaded: true});
     },
     render() {
         var canMoveNext = this.props.canMoveNext;
@@ -88,6 +92,8 @@ var Question = React.createClass({
              </Banner> :
              "";
 
+        var loading = this.state.spriteLoaded ? "" : (<Loader />);
+
         var introText = this.props.question.introText;
         var sprite = this.props.question.sprite || {}; // TODO: default to Sprite?
 
@@ -101,7 +107,14 @@ var Question = React.createClass({
             textAlign: 'center'
         };
 
-        console.log ("question", this.props.question);
+        var spriteVisibility = {
+            transition: "all 0.5s ease",
+            WebkitTransition: "all 0.5s ease",
+            opacity: this.state.spriteLoaded ? 1 : 0,
+            MozOpacity: this.state.spriteLoaded ? 1 : 0,
+            KhtmlOpacity: this.state.spriteLoaded ? 1 : 0,
+            filter: this.state.spriteLoaded ? "alpha(opacity=100)" : "alpha(opacity=0)" /* For IE8 and earlier */
+        };
 
         return (
           <div>
@@ -109,17 +122,21 @@ var Question = React.createClass({
               
                 <div style={containerStyle}>
                     <div style={centerStyle}>
-                        <SpriteFrame
-                            imageUrl={sprite.url} 
-                            width={sprite.width} 
-                            height={sprite.height} 
-                            rows={sprite.rows} 
-                            cols={sprite.cols} 
-                            frame={this.state.frame}
-                            totalFrames={sprite.frames} 
-                            onLoad={this.onSpriteLoad} />
+                        {loading}
+                        <div style={spriteVisibility}>
 
-                        <h1>
+                            <SpriteFrame
+                                imageUrl={sprite.url} 
+                                width={sprite.width} 
+                                height={sprite.height} 
+                                rows={sprite.rows} 
+                                cols={sprite.cols} 
+                                frame={this.state.frame}
+                                totalFrames={sprite.frames} 
+                                onLoad={this.onSpriteLoad} />
+
+                        </div>
+                        <h1 style={spriteVisibility}>
                             {introText}
                         </h1>
                     </div>
