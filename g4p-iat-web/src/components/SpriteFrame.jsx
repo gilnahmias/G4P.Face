@@ -41,10 +41,16 @@ var SpriteFrame = React.createClass({
         this.setState(getState.call(this));
     },
     onSpriteLoad: function(e){
-        var loadTime = e.timeStamp - _initTimestamp;
-
         if (typeof this.props.onLoad === "function"){
-            this.props.onLoad({loadTime: loadTime});
+            var onLoad = this.props.onLoad;
+            window.requestAnimationFrame(function(){
+                // now image has loaded
+                window.requestAnimationFrame(function(){
+                    // now image is painted
+                    var loadTime = Date.now() - _initTimestamp;
+                    onLoad({loadTime: loadTime});
+                });
+            });
         }
     },
     render() {
