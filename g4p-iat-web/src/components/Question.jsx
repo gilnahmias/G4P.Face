@@ -18,6 +18,13 @@ var isBannerVisible = function(state){
     return state !== "running";
 };
 
+var _save = function(question, experimentId, userId){
+    if (!question.__saved){
+        AnswerActions.saveAnswer(question, experimentId, userId);
+        question.__saved = true;
+    }
+};
+
 var Question = React.createClass({
     getInitialState: function() {
         return {banner: "Space to Start", frame: 0, spriteLoaded: false};
@@ -58,7 +65,7 @@ var Question = React.createClass({
 
             var question = this.props.question;
             if (question.state === "done"){
-                AnswerActions.saveAnswer(question, this.props.experimentId, this.props.userId);
+                _save(question, this.props.experimentId, this.props.userId);
             }
         }
     },
@@ -86,14 +93,19 @@ var Question = React.createClass({
         this.setState({spriteLoaded: true});
     },
     render() {
+        var arrowStyle ={
+            height: 70,
+            display: 'inline-block',
+            fontSize: 60
+        };
         var canMoveNext = this.props.canMoveNext;
         var canMovePrev = this.props.canMovePrev;
         var banner = isBannerVisible(this.props.question.state) ?
              <Banner>
                 <div style={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'flex-start'}}>
-                    <span style={{flexBasis: '10%'}} onClick={this.handlePrev}>{canMovePrev ? (<a href="#"><i className="glyphicon glyphicon-circle-arrow-left"></i></a>) : ""}</span>
+                    <span style={{flexBasis: '10%'}} onClick={this.handlePrev}>{canMovePrev ? (<a href="#" style={arrowStyle}><i className="glyphicon glyphicon-arrow-left"></i></a>) : ""}</span>
                     <span style={{flexBasis: '80%'}}>{this.state.banner}</span>
-                    <span style={{flexBasis: '10%'}} onClick={this.handleNext}>{canMoveNext ? (<a href="#"><i className="glyphicon glyphicon-circle-arrow-right"></i></a>) : ""}</span>
+                    <span style={{flexBasis: '10%'}} onClick={this.handleNext}>{canMoveNext ? (<a href="#" style={arrowStyle}><i className="glyphicon glyphicon-arrow-right"></i></a>) : ""}</span>
                 </div>
              </Banner> :
              "";
