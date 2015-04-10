@@ -2,13 +2,13 @@
  * @jsx React.DOM
  */
 
-'use strict';
+ 'use strict';
 
-var React = require('react');
-var ExperimentStore = require('../stores/ExperimentStore.js');
-var Question = require ('../components/Question.jsx');
+ var React = require('react');
+ var ExperimentStore = require('../stores/ExperimentStore.js');
+ var Question = require ('../components/Question.jsx');
 
-var getState = function(){
+ var getState = function(){
     var state = {
         question: ExperimentStore.currentQuestion(),
         canMovePrev: ExperimentStore.canMovePrev(),
@@ -34,8 +34,6 @@ var QuestionPage = React.createClass({
                         canMovePrev={state.canMovePrev}
                         experimentId={state.experimentId}
                         userId={state.userId} />
-                        }
-                        }
                 </div>);
     }
 });
