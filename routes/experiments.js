@@ -38,6 +38,27 @@ var tempAnswerFromJS = function (js){
                 js.experimentId);
 };
 
+var arrayToCSV = function (array){
+    array = array || [];
+    var csv = "";
+    var delimiter = "\t";
+    var newline = "\n";
+
+    if (array.length >= 1){
+        // headers
+        csv += Object.keys(array[0]).join(delimiter) + newline;
+    }
+
+    array.forEach(function(item){
+        //values
+        csv += Object.keys(item).map(function(key){
+            return item[key];
+        }).join(delimiter) + newline;
+    });
+
+    return csv;
+}
+
 /* GET experiment listing. */
 router.get('/', function (req, res) {
     res.send(values(experiments));
@@ -53,6 +74,17 @@ router.post('/:id/answers', function (req, res) {
     var answer = tempAnswerFromJS(req.body); // should be Answer.fromJS()
     experiments[id].addAnswer(answer);
     res.send(answer);
+});
+
+router.get('/:id/answers', function (req, res) {
+    var id = req.params.id;
+    var answers = experiments[id].answers;
+    var csv = arrayToCSV(answers);
+
+    res.setHeader('Content-disposition', 'attachment; filename=' + id + '_answers.xls');
+    res.setHeader('Content-type', 'text/csv');
+
+    res.send(csv);
 });
 
 module.exports = router;

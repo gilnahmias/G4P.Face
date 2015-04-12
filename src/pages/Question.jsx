@@ -38,7 +38,7 @@ var QuestionPage = React.createClass({
 
 
         return (<div>
-                    {!this.state.done ? <ThankYou /> : {question}}
+                    {this.state.done ? <ThankYou /> : {question}}
                 </div>);
     }
 });

@@ -24,8 +24,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/', routes);
-app.use('/admin', routes);
-
 app.use('/users', users);
 app.use('/experiments', experiments);
 app.use('/sprites', sprites);
