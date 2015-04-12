@@ -12,9 +12,11 @@
 [Rr]elease/
 x64/
 build/
+dist/
 [Oo]bj/
-G4P.UsagePatterns.Web/bin/
-G4P.UsagePatterns.Web/obj/
+node_modules/
+bower_components/
+*.log
 
 # Enable "build/" folder in the NuGet Packages folder since NuGet packages use it for MSBuild targets
 !packages/*/build/
