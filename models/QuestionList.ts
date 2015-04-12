@@ -5,9 +5,11 @@ import Question = require ('./Question');
 class QuestionList {
     private _questions:Array<Question>;
     private _currentIndex = -1;
+    private _onDone = null;
 
-    constructor(questions?:Array<Question>) {
+    constructor(questions?:Array<Question>, onDone?:any) {
         this._questions = [];
+        this._onDone = onDone;
 
         if (!questions){
             return;
@@ -21,9 +23,8 @@ class QuestionList {
     add(question: Question){
         var self = this;
         question.onStateChanged = function(){
-            if (self.areAllStates("done") && typeof this._onDone === "function"){
-                debugger;
-                this._onDone.call(this);
+            if (typeof self._onDone === "function" && self.areAllStates("done")){
+                self._onDone.call(this);
             }
         };
 

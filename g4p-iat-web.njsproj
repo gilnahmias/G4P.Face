@@ -5,6 +5,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Name>g4p-iat-web</Name>
     <RootNamespace>g4p-iat-web</RootNamespace>
+    <NameOfLastUsedPublishProfile>g4p-iat</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -34,14 +35,15 @@
     <Compile Include="config\karma.js" />
     <Compile Include="config\webpack.js" />
     <Compile Include="gulpfile.js" />
-    <Compile Include="models\experiment.js" />
+    <Compile Include="bin\www" />
     <Compile Include="routes\experiments.js" />
     <Compile Include="routes\index.js" />
+    <Compile Include="routes\sprites.js" />
     <Compile Include="routes\users.js" />
-    <Compile Include="bin\www" />
+    <Compile Include="src\actions\AnswerActions.js" />
     <Compile Include="src\actions\ExperimentActions.js" />
-    <Compile Include="src\actions\ProbeActions.js" />
-    <Compile Include="src\actions\ProbeListActions.js" />
+    <Compile Include="src\actions\QuestionActions.js" />
+    <Compile Include="src\actions\QuestionListActions.js" />
     <Compile Include="src\dispatcher\biff.js" />
     <Compile Include="src\models\DataService.js" />
     <Compile Include="src\models\Environment.js" />
@@ -50,14 +52,52 @@
     <Compile Include="src\models\ProbeList.js" />
     <Compile Include="src\models\ProbeResult.js" />
     <Compile Include="src\models\Sprite.js" />
+    <Compile Include="src\models\Sprite2.js" />
     <Compile Include="src\stores\ExperimentStore.js" />
+    <Compile Include="src\stores\ExperimentStore2.js" />
     <Compile Include="src\strings\Experiment-en.js" />
     <Content Include=".editorconfig" />
     <Content Include=".gitignore" />
     <Content Include=".jshintrc" />
+    <None Include="g4p-test.pubxml" />
+    <None Include="g4p-iat.pubxml" />
     <Content Include="package.json" />
     <Content Include="public\stylesheets\style.styl" />
     <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\" />
+    <Folder Include="config\" />
+    <Folder Include="models\" />
+    <Folder Include="public\" />
+    <Folder Include="public\images\" />
+    <Folder Include="public\javascripts\" />
+    <Folder Include="public\stylesheets\" />
+    <Folder Include="repositories\" />
+    <Folder Include="routes\" />
+    <Folder Include="src\" />
+    <Folder Include="src\actions\" />
+    <Folder Include="src\assets\" />
+    <Folder Include="src\assets\sprites\" />
+    <Folder Include="src\assets\sprites\15x40\" />
+    <Folder Include="src\components\" />
+    <Folder Include="src\components\question\" />
+    <Folder Include="src\dispatcher\" />
+    <Folder Include="src\images\" />
+    <Folder Include="src\layouts\" />
+    <Folder Include="src\models\" />
+    <Folder Include="src\pages\" />
+    <Folder Include="src\stores\" />
+    <Folder Include="src\strings\" />
+    <Folder Include="src\styles\" />
+    <Folder Include="test\" />
+    <Folder Include="typings\" />
+    <Folder Include="typings\mongodb\" />
+    <Folder Include="typings\node\" />
+    <Folder Include="views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="repositories\Repository.ts.fix" />
     <Content Include="src\App.jsx" />
     <Content Include="src\assets\apple-touch-icon-precomposed.png" />
     <Content Include="src\assets\browserconfig.xml" />
@@ -75,20 +115,22 @@
     <Content Include="src\assets\sprites\15x40\sprite-jew-smile-angry-teeth-small.jpg" />
     <Content Include="src\assets\tile-wide.png" />
     <Content Include="src\assets\tile.png" />
+    <Content Include="src\components\Loader.jsx" />
     <Content Include="src\components\Navbar.jsx" />
     <Content Include="src\components\NavbarSpec.jsx" />
-    <Content Include="src\components\Probe.jsx" />
-    <Content Include="src\components\probe\Banner.jsx" />
+    <Content Include="src\components\Question.jsx" />
+    <Content Include="src\components\question\Banner.jsx" />
     <Content Include="src\components\SpriteFrame.jsx" />
+    <Content Include="src\images\Arab_nametag.jpg" />
+    <Content Include="src\images\Jew_nametag.jpg" />
     <Content Include="src\images\logo-small%402x.png" />
     <Content Include="src\images\logo-small.png" />
-    <Content Include="src\images\sprite1.png" />
     <Content Include="src\layouts\Default.jsx" />
     <Content Include="src\pages\404.html" />
     <Content Include="src\pages\Home.jsx" />
     <Content Include="src\pages\index.html" />
     <Content Include="src\pages\Privacy.jsx" />
-    <Content Include="src\pages\Probe.jsx" />
+    <Content Include="src\pages\Question.jsx" />
     <Content Include="src\pages\StartExperiment.jsx" />
     <Content Include="src\styles\.csscomb.json" />
     <Content Include="src\styles\.csslintrc" />
@@ -98,44 +140,31 @@
     <Content Include="src\styles\navbar.less" />
     <Content Include="src\styles\utilities.less" />
     <Content Include="src\styles\variables.less" />
+    <Content Include="views\error.jade" />
     <Content Include="views\index.jade" />
     <Content Include="views\layout.jade" />
-    <Content Include="views\error.jade" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\" />
-    <Folder Include="config\" />
-    <Folder Include="models\" />
-    <Folder Include="public\" />
-    <Folder Include="public\images\" />
-    <Folder Include="public\javascripts\" />
-    <Folder Include="public\stylesheets\" />
-    <Folder Include="routes\" />
-    <Folder Include="src\" />
-    <Folder Include="src\actions\" />
-    <Folder Include="src\assets\" />
-    <Folder Include="src\assets\sprites\" />
-    <Folder Include="src\assets\sprites\15x40\" />
-    <Folder Include="src\components\" />
-    <Folder Include="src\components\probe\" />
-    <Folder Include="src\dispatcher\" />
-    <Folder Include="src\images\" />
-    <Folder Include="src\layouts\" />
-    <Folder Include="src\models\" />
-    <Folder Include="src\pages\" />
-    <Folder Include="src\stores\" />
-    <Folder Include="src\strings\" />
-    <Folder Include="src\styles\" />
-    <Folder Include="test\" />
-    <Folder Include="views\" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config" />
     <Content Include="bin\ChangeConfig.ps1" />
     <Content Include="bin\download.ps1" />
     <Content Include="bin\setup_web.cmd" />
     <Content Include="bin\node.cmd" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="models\Answer.ts" />
+    <TypeScriptCompile Include="models\Browser.ts" />
+    <TypeScriptCompile Include="models\Experiment.ts" />
+    <TypeScriptCompile Include="models\ExperimentTemplate.ts" />
+    <TypeScriptCompile Include="models\IdGenerator.ts" />
+    <TypeScriptCompile Include="models\Question.ts" />
+    <TypeScriptCompile Include="models\QuestionList.ts" />
+    <TypeScriptCompile Include="models\Sprite.ts" />
+    <TypeScriptCompile Include="models\User.ts" />
+    <TypeScriptCompile Include="repositories\ExperimentRepository.ts" />
+    <TypeScriptCompile Include="repositories\QuestionRepository.ts" />
+    <TypeScriptCompile Include="repositories\SpriteRepository.ts" />
+    <TypeScriptCompile Include="typings\mongodb\mongodb.d.ts" />
+    <TypeScriptCompile Include="typings\node\node.d.ts" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />

@@ -40,12 +40,15 @@ var ExperimentStore = biff.createStore({
     },
     getUserId: function(){
         return _experiment.userId;
+    },
+    allQuestionsDone:function(){
+        console.log ("all done");
     }
 }, function (payload){
     switch(payload.actionType){
         case 'LOAD_EXPERIMENT':
             _experiment = payload.experiment;
-            _questionList = new QuestionList(_experiment.template.questions);
+            _questionList = new QuestionList(_experiment.template.questions, this.allQuestionsDone);
             this.emitChange();
             break;
 

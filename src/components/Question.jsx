@@ -93,19 +93,14 @@ var Question = React.createClass({
         this.setState({spriteLoaded: true});
     },
     render() {
-        var arrowStyle ={
-            height: 70,
-            display: 'inline-block',
-            fontSize: 60
-        };
         var canMoveNext = this.props.canMoveNext;
         var canMovePrev = this.props.canMovePrev;
         var banner = isBannerVisible(this.props.question.state) ?
              <Banner>
                 <div style={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'flex-start'}}>
-                    <span style={{flexBasis: '10%'}} onClick={this.handlePrev}>{canMovePrev ? (<a href="#" style={arrowStyle}><i className="glyphicon glyphicon-arrow-left"></i></a>) : ""}</span>
+                    <span style={{flexBasis: '10%'}} onClick={this.handlePrev}>{canMovePrev ? (<a href="#" className="arrow"><i className="glyphicon glyphicon-arrow-left"></i></a>) : ""}</span>
                     <span style={{flexBasis: '80%'}}>{this.state.banner}</span>
-                    <span style={{flexBasis: '10%'}} onClick={this.handleNext}>{canMoveNext ? (<a href="#" style={arrowStyle}><i className="glyphicon glyphicon-arrow-right"></i></a>) : ""}</span>
+                    <span style={{flexBasis: '10%'}} onClick={this.handleNext}>{canMoveNext ? (<a href="#" className="arrow"><i className="glyphicon glyphicon-arrow-right"></i></a>) : ""}</span>
                 </div>
              </Banner> :
              "";
@@ -117,7 +112,7 @@ var Question = React.createClass({
 
 
         var containerStyle = {
-            display: 'flex',
+            display: 'flex'
         };
 
         var centerStyle = {
@@ -125,23 +120,26 @@ var Question = React.createClass({
             textAlign: 'center'
         };
 
+        var opacity = !this.state.spriteLoaded ? 0 :
+            (this.props.question.state === "done" ? 0.3 : 1);
+
+        var filterOpacity = 100 * opacity;
+
         var spriteVisibility = {
-            transition: "all 0.5s ease",
-            WebkitTransition: "all 0.5s ease",
-            opacity: this.state.spriteLoaded ? 1 : 0,
-            MozOpacity: this.state.spriteLoaded ? 1 : 0,
-            KhtmlOpacity: this.state.spriteLoaded ? 1 : 0,
-            filter: this.state.spriteLoaded ? "alpha(opacity=100)" : "alpha(opacity=0)" /* For IE8 and earlier */
+            opacity: opacity,
+            MozOpacity: opacity,
+            KhtmlOpacity: opacity,
+            filter: "alpha(opacity="+ filterOpacity +")" /* For IE8 and earlier */
         };
 
         return (
-          <div>
+          <div className="question">
               {banner}
               
                 <div style={containerStyle}>
                     <div style={centerStyle}>
                         {loading}
-                        <div style={spriteVisibility}>
+                        <div className="sprite" style={spriteVisibility}>
 
                             <SpriteFrame
                                 imageUrl={sprite.url} 
