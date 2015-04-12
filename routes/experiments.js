@@ -8,9 +8,9 @@ var Sprite = require('../build/js/models/Sprite.js');
 
 var questions = [
     new Question("q1", "s2", "", "מוחמד"),
-    new Question("q1", "s4", "", "מוחמוד"),
-    new Question("q1", "s7", "", "אבי"),
-    new Question("q1", "s8", "", "אבי")
+    new Question("q2", "s4", "", "מוחמוד"),
+    new Question("q3", "s7", "", "אבי"),
+    new Question("q4", "s8", "", "אבי")
 ];
 
 var template = new ExperimentTeamplate("et1", "test", questions);
