@@ -8,6 +8,10 @@ var Experiment = {
             next: "Okay, I'm ready!",
             invalid: "Whenever you're ready..."
         }
+    },
+    thankYou: {
+        title: 'Thank You!',
+        subtitle: 'You have completed the task'
     }
 };
 

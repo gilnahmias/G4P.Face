@@ -10,7 +10,8 @@ var Experiment = require ('../../build/js/models/Experiment');
 
 
 var _experiment = new Experiment();
-_questionList = new QuestionList();
+var _questionList = new QuestionList();
+var _allQuestionsDone = false;
 
 var sprites = [
     new Sprite("sprites/15x40/sprite-arab-angry-smile-small.jpg", 7680, 15360, 40, 15, 600),
@@ -41,14 +42,17 @@ var ExperimentStore = biff.createStore({
     getUserId: function(){
         return _experiment.userId;
     },
-    allQuestionsDone:function(){
-        console.log ("all done");
+    setAllQuestionsDone:function(){
+        _allQuestionsDone = true;
+    },
+    getAllQuestionsDone: function(){
+        return !!_allQuestionsDone;
     }
 }, function (payload){
     switch(payload.actionType){
         case 'LOAD_EXPERIMENT':
             _experiment = payload.experiment;
-            _questionList = new QuestionList(_experiment.template.questions, this.allQuestionsDone);
+            _questionList = new QuestionList(_experiment.template.questions, this.setAllQuestionsDone);
             this.emitChange();
             break;
 

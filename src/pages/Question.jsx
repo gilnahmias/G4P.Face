@@ -7,6 +7,7 @@
  var React = require('react');
  var ExperimentStore = require('../stores/ExperimentStore.js');
  var Question = require ('../components/Question.jsx');
+ var ThankYou = require ('../components/ThankYou.jsx');
 
  var getState = function(){
     var state = {
@@ -14,7 +15,8 @@
         canMovePrev: ExperimentStore.canMovePrev(),
         canMoveNext: ExperimentStore.canMoveNext(),
         experimentId: ExperimentStore.getExperimentId(),
-        userId: ExperimentStore.getUserId()
+        userId: ExperimentStore.getUserId(),
+        done: ExperimentStore.getAllQuestionsDone()
     };
 
     return state;
@@ -27,13 +29,16 @@ var QuestionPage = React.createClass({
     render() {
         var state = this.state;
 
-        return (<div>
-                    <Question 
+        var question = (<Question 
                         question={state.question} 
                         canMoveNext={state.canMoveNext}
                         canMovePrev={state.canMovePrev}
                         experimentId={state.experimentId}
-                        userId={state.userId} />
+                        userId={state.userId} />);
+
+
+        return (<div>
+                    {!this.state.done ? <ThankYou /> : {question}}
                 </div>);
     }
 });
