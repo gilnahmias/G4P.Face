@@ -8,7 +8,6 @@ var QuestionList = require ('../../build/js/models/QuestionList');
 var Answer = require ('../../build/js/models/Answer');
 var Experiment = require ('../../build/js/models/Experiment');
 
-
 var _experiment = new Experiment();
 var _questionList = new QuestionList();
 var _allQuestionsDone = false;

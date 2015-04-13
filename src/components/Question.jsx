@@ -8,6 +8,7 @@
  var Banner = require ('./question/Banner.jsx');
  var Loader = require ('./Loader.jsx');
  var SpriteFrame = require ('./SpriteFrame.jsx');
+ var Strings = require ('../Strings/Experiment-en.js').question;
  var QuestionActions = require('../actions/QuestionActions.js');
  var AnswerActions = require('../actions/AnswerActions.js');
  var QuestionListActions = require('../actions/QuestionListActions.js');
@@ -27,7 +28,7 @@ var _save = function(question, experimentId, userId){
 
 var Question = React.createClass({
     getInitialState: function() {
-        return {banner: "Space to Start", frame: 0, spriteLoaded: false};
+        return {banner: Strings.spaceToStart, frame: 0, spriteLoaded: false};
     },
     componentWillReceiveProps: function(nextProps){
         var question = nextProps.question;
@@ -37,12 +38,13 @@ var Question = React.createClass({
         var totalFrames = question.sprite.frames;
 
         if (state === "done"){
-            var banner = "It took you " + elapsed.toFixed(1) + "ms (frame " + frame + "/" + totalFrames + ").";
-            this.setState ({banner: banner});
+            var messages = Strings.thankYou;
+            var pos = Math.floor(Math.random() * messages.length);
+            this.setState ({banner: messages[pos]});
         }
 
         if (state == "not started"){
-            this.setState({banner: "Space to Start"});
+            this.setState({banner: Strings.spaceToStart, frame: frame});
         }
     },
     componentWillMount: function() {
@@ -74,7 +76,7 @@ var Question = React.createClass({
             QuestionActions.startQuestion(this.frameChanged);
         }
         else {
-            this.setState({ banner: "We will start in " + secondsToStart + " seconds" });
+            this.setState({ banner: Strings.weWillStartIn + secondsToStart});
         }
     },
     frameChanged: function (frame){
