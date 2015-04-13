@@ -6,7 +6,6 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "prestart": "npm install && gulp build",
     "start": "node ./bin/www",
     "pretest": "npm install",
     "test": "karma start ./config/karma.js --single-run",
