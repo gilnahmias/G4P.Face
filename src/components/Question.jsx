@@ -99,7 +99,7 @@ var Question = React.createClass({
              <Banner>
                 <div style={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'flex-start'}}>
                     <span style={{flexBasis: '10%'}} onClick={this.handlePrev}>{canMovePrev ? (<a href="#" className="arrow"><i className="glyphicon glyphicon-arrow-left"></i></a>) : ""}</span>
-                    <span style={{flexBasis: '80%'}}>{this.state.banner}</span>
+                    <span style={{flexBasis: '80%'}} className="banner-text">{this.state.banner}</span>
                     <span style={{flexBasis: '10%'}} onClick={this.handleNext}>{canMoveNext ? (<a href="#" className="arrow"><i className="glyphicon glyphicon-arrow-right"></i></a>) : ""}</span>
                 </div>
              </Banner> :

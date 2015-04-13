@@ -11,8 +11,8 @@ var Navbar = React.createClass({
   render() {
     return (
       <div className="navbar-top">
-        <div className="container">
-          <Link className="navbar-brand row" to="home">
+        <div className="container-g4p">
+          <Link className="navbar-brand-g4p row" to="startExperiment">
             {' Games for peace'}
           </Link>
         </div>

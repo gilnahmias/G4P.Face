@@ -1,3 +1,7 @@
+body {
+    font-family: Tahoma;
+}
+
 .question {
     margin-top: 160;
 
@@ -16,6 +20,12 @@
         margin-top: 65px;
         transition: all 0.25s ease-in-out;
         -webkit-transition: all 0.25s ease-in-out;
+    }
+
+    .banner-text {
+        font-size: 30px;
+        line-height: 30px;
+        padding-top: 22px;
     }
 }
 
@@ -49,5 +59,25 @@
         margin-top: 5px;
         color: @accent5;
         font-size: 30px;
+    }
+}
+
+.navbar-top  {
+    border: none;
+    
+    .container-g4p {
+        background-color: @accent4;
+        padding-left: 3em;
+        font-size: 22px;
+        line-height: 18px;
+
+        .navbar-brand-g4p {
+            color: @accent3;
+
+            &:hover {
+                text-decoration: none;
+                color: @accent2;
+            }
+        }
     }
 }
