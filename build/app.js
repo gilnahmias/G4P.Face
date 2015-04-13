@@ -50,8 +50,8 @@
 
 	'use strict';
 
-	var React = __webpack_require__(6);
-	var $__0=   __webpack_require__(7),Routes=$__0.Routes,Route=$__0.Route;
+	var React = __webpack_require__(7);
+	var $__0=   __webpack_require__(6),Routes=$__0.Routes,Route=$__0.Route;
 
 	// Export React so the dev tools can find it
 	(window !== window.top ? window.top : window).React = React;
@@ -79,8 +79,8 @@
 
 	'use strict';
 
-	var React = __webpack_require__(6);
-	var $__0=  __webpack_require__(7),Link=$__0.Link;
+	var React = __webpack_require__(7);
+	var $__0=  __webpack_require__(6),Link=$__0.Link;
 	var Navbar = __webpack_require__(8);
 
 	var DefaultLayout = React.createClass({displayName: 'DefaultLayout',
@@ -117,7 +117,7 @@
 
 	'use strict';
 
-	var React = __webpack_require__(6);
+	var React = __webpack_require__(7);
 
 	var HomePage = React.createClass({displayName: 'HomePage',
 	  render:function() {
@@ -175,7 +175,7 @@
 
 	'use strict';
 
-	var React = __webpack_require__(6);
+	var React = __webpack_require__(7);
 
 	var PrivacyPage = React.createClass({displayName: 'PrivacyPage',
 	  render:function() {
@@ -240,7 +240,7 @@
 
 	 'use strict';
 
-	 var React = __webpack_require__(6);
+	 var React = __webpack_require__(7);
 	 var ExperimentStore = __webpack_require__(22);
 	 var Question = __webpack_require__ (9);
 	 var ThankYou = __webpack_require__ (10);
@@ -291,11 +291,11 @@
 
 	'use strict';
 
-	var React = __webpack_require__(6);
+	var React = __webpack_require__(7);
 	var Strings = __webpack_require__ (23).startScreen;
 	var ExperimentStore = __webpack_require__ (22);
 	var ExperimentActions = __webpack_require__ (24);
-	var $__0=  __webpack_require__(7),Link=$__0.Link;
+	var $__0=  __webpack_require__(6),Link=$__0.Link;
 
 	var getState = function(){
 	    return {
@@ -383,13 +383,6 @@
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(21);
-
-
-/***/ },
-/* 7 */
-/***/ function(module, exports, __webpack_require__) {
-
 	exports.goBack = __webpack_require__(11).goBack;
 	exports.replaceWith = __webpack_require__(11).replaceWith;
 	exports.transitionTo = __webpack_require__(11).transitionTo;
@@ -408,6 +401,13 @@
 
 
 /***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(21);
+
+
+/***/ },
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -417,8 +417,8 @@
 
 	'use strict';
 
-	var React = __webpack_require__(6);
-	var $__0=  __webpack_require__(7),Link=$__0.Link;
+	var React = __webpack_require__(7);
+	var $__0=  __webpack_require__(6),Link=$__0.Link;
 
 	var Navbar = React.createClass({displayName: 'Navbar',
 	  render:function() {
@@ -447,7 +447,7 @@
 
 	 'use strict';
 
-	 var React = __webpack_require__(6);
+	 var React = __webpack_require__(7);
 	 var Banner = __webpack_require__ (25);
 	 var Loader = __webpack_require__ (26);
 	 var SpriteFrame = __webpack_require__ (27);
@@ -621,7 +621,7 @@
 
 	'use strict';
 
-	var React = __webpack_require__(6);
+	var React = __webpack_require__(7);
 	var Strings = __webpack_require__(23).thankYou;
 
 	var ThankYou = React.createClass({displayName: 'ThankYou',
@@ -729,7 +729,7 @@
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(6);
+	var React = __webpack_require__(7);
 	var ActiveState = __webpack_require__(18);
 	var transitionTo = __webpack_require__(11).transitionTo;
 	var withoutProperties = __webpack_require__(35);
@@ -930,7 +930,7 @@
 /* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(6);
+	var React = __webpack_require__(7);
 	var Route = __webpack_require__(16);
 
 	function createRedirectHandler(to) {
@@ -966,7 +966,7 @@
 /* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(6);
+	var React = __webpack_require__(7);
 	var withoutProperties = __webpack_require__(35);
 
 	/**
@@ -1072,7 +1072,7 @@
 /* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(6);
+	var React = __webpack_require__(7);
 	var warning = __webpack_require__(37);
 	var copyProperties = __webpack_require__(38);
 	var Promise = __webpack_require__(72);
@@ -1600,7 +1600,7 @@
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(6);
+	var React = __webpack_require__(7);
 	var resolveAsyncState = __webpack_require__(49);
 
 	/**
@@ -2072,7 +2072,7 @@
 
 	'use strict';
 
-	var React = __webpack_require__(6);
+	var React = __webpack_require__(7);
 
 	var Banner = React.createClass({displayName: 'Banner',
 	    render:function() {
@@ -2094,7 +2094,7 @@
 
 	'use strict';
 
-	var React = __webpack_require__(6);
+	var React = __webpack_require__(7);
 	var Strings = __webpack_require__(23).question;
 
 	var Loader = React.createClass({displayName: 'Loader',
@@ -2118,7 +2118,7 @@
 	 */
 
 	'use strict';
-	var React = __webpack_require__(6);
+	var React = __webpack_require__(7);
 
 	var getState = function(){
 	    var frame = Math.min(this.props.frame, this.props.totalFrames - 1);
@@ -3190,7 +3190,7 @@
 /* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(6);
+	var React = __webpack_require__(7);
 	var invariant = __webpack_require__(71);
 	var warning = __webpack_require__(37);
 	var Path = __webpack_require__(39);
@@ -25558,7 +25558,7 @@
 	'use strict';
 
 	var Environment = __webpack_require__(222);
-	var $ = __webpack_require__(226);
+	var $ = __webpack_require__(227);
 
 	var DataService = (function (experimentId) {
 	    function DataService() {
@@ -26531,7 +26531,7 @@
 
 	var ExecutionEnvironment = __webpack_require__(69);
 
-	var createArrayFrom = __webpack_require__(227);
+	var createArrayFrom = __webpack_require__(226);
 	var getMarkupWrap = __webpack_require__(221);
 	var invariant = __webpack_require__(71);
 
@@ -27054,7 +27054,7 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var React = __webpack_require__(6);
+	var React = __webpack_require__(7);
 	var shallowEqual = __webpack_require__(180);
 
 	module.exports = function FluxComponent(Component, stores, storeDidChange) {
@@ -27107,6 +27107,103 @@
 
 /***/ },
 /* 226 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2014 Facebook, Inc.
+	 *
+	 * Licensed under the Apache License, Version 2.0 (the "License");
+	 * you may not use this file except in compliance with the License.
+	 * You may obtain a copy of the License at
+	 *
+	 * http://www.apache.org/licenses/LICENSE-2.0
+	 *
+	 * Unless required by applicable law or agreed to in writing, software
+	 * distributed under the License is distributed on an "AS IS" BASIS,
+	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	 * See the License for the specific language governing permissions and
+	 * limitations under the License.
+	 *
+	 * @providesModule createArrayFrom
+	 * @typechecks
+	 */
+
+	var toArray = __webpack_require__(232);
+
+	/**
+	 * Perform a heuristic test to determine if an object is "array-like".
+	 *
+	 *   A monk asked Joshu, a Zen master, "Has a dog Buddha nature?"
+	 *   Joshu replied: "Mu."
+	 *
+	 * This function determines if its argument has "array nature": it returns
+	 * true if the argument is an actual array, an `arguments' object, or an
+	 * HTMLCollection (e.g. node.childNodes or node.getElementsByTagName()).
+	 *
+	 * It will return false for other array-like objects like Filelist.
+	 *
+	 * @param {*} obj
+	 * @return {boolean}
+	 */
+	function hasArrayNature(obj) {
+	  return (
+	    // not null/false
+	    !!obj &&
+	    // arrays are objects, NodeLists are functions in Safari
+	    (typeof obj == 'object' || typeof obj == 'function') &&
+	    // quacks like an array
+	    ('length' in obj) &&
+	    // not window
+	    !('setInterval' in obj) &&
+	    // no DOM node should be considered an array-like
+	    // a 'select' element has 'length' and 'item' properties on IE8
+	    (typeof obj.nodeType != 'number') &&
+	    (
+	      // a real array
+	      (// HTMLCollection/NodeList
+	      (Array.isArray(obj) ||
+	      // arguments
+	      ('callee' in obj) || 'item' in obj))
+	    )
+	  );
+	}
+
+	/**
+	 * Ensure that the argument is an array by wrapping it in an array if it is not.
+	 * Creates a copy of the argument if it is already an array.
+	 *
+	 * This is mostly useful idiomatically:
+	 *
+	 *   var createArrayFrom = require('createArrayFrom');
+	 *
+	 *   function takesOneOrMoreThings(things) {
+	 *     things = createArrayFrom(things);
+	 *     ...
+	 *   }
+	 *
+	 * This allows you to treat `things' as an array, but accept scalars in the API.
+	 *
+	 * If you need to convert an array-like object, like `arguments`, into an array
+	 * use toArray instead.
+	 *
+	 * @param {*} obj
+	 * @return {array}
+	 */
+	function createArrayFrom(obj) {
+	  if (!hasArrayNature(obj)) {
+	    return [obj];
+	  } else if (Array.isArray(obj)) {
+	    return obj.slice();
+	  } else {
+	    return toArray(obj);
+	  }
+	}
+
+	module.exports = createArrayFrom;
+
+
+/***/ },
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -36314,103 +36411,6 @@
 	return jQuery;
 
 	}));
-
-
-/***/ },
-/* 227 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2014 Facebook, Inc.
-	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License");
-	 * you may not use this file except in compliance with the License.
-	 * You may obtain a copy of the License at
-	 *
-	 * http://www.apache.org/licenses/LICENSE-2.0
-	 *
-	 * Unless required by applicable law or agreed to in writing, software
-	 * distributed under the License is distributed on an "AS IS" BASIS,
-	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 * See the License for the specific language governing permissions and
-	 * limitations under the License.
-	 *
-	 * @providesModule createArrayFrom
-	 * @typechecks
-	 */
-
-	var toArray = __webpack_require__(232);
-
-	/**
-	 * Perform a heuristic test to determine if an object is "array-like".
-	 *
-	 *   A monk asked Joshu, a Zen master, "Has a dog Buddha nature?"
-	 *   Joshu replied: "Mu."
-	 *
-	 * This function determines if its argument has "array nature": it returns
-	 * true if the argument is an actual array, an `arguments' object, or an
-	 * HTMLCollection (e.g. node.childNodes or node.getElementsByTagName()).
-	 *
-	 * It will return false for other array-like objects like Filelist.
-	 *
-	 * @param {*} obj
-	 * @return {boolean}
-	 */
-	function hasArrayNature(obj) {
-	  return (
-	    // not null/false
-	    !!obj &&
-	    // arrays are objects, NodeLists are functions in Safari
-	    (typeof obj == 'object' || typeof obj == 'function') &&
-	    // quacks like an array
-	    ('length' in obj) &&
-	    // not window
-	    !('setInterval' in obj) &&
-	    // no DOM node should be considered an array-like
-	    // a 'select' element has 'length' and 'item' properties on IE8
-	    (typeof obj.nodeType != 'number') &&
-	    (
-	      // a real array
-	      (// HTMLCollection/NodeList
-	      (Array.isArray(obj) ||
-	      // arguments
-	      ('callee' in obj) || 'item' in obj))
-	    )
-	  );
-	}
-
-	/**
-	 * Ensure that the argument is an array by wrapping it in an array if it is not.
-	 * Creates a copy of the argument if it is already an array.
-	 *
-	 * This is mostly useful idiomatically:
-	 *
-	 *   var createArrayFrom = require('createArrayFrom');
-	 *
-	 *   function takesOneOrMoreThings(things) {
-	 *     things = createArrayFrom(things);
-	 *     ...
-	 *   }
-	 *
-	 * This allows you to treat `things' as an array, but accept scalars in the API.
-	 *
-	 * If you need to convert an array-like object, like `arguments`, into an array
-	 * use toArray instead.
-	 *
-	 * @param {*} obj
-	 * @return {array}
-	 */
-	function createArrayFrom(obj) {
-	  if (!hasArrayNature(obj)) {
-	    return [obj];
-	  } else if (Array.isArray(obj)) {
-	    return obj.slice();
-	  } else {
-	    return toArray(obj);
-	  }
-	}
-
-	module.exports = createArrayFrom;
 
 
 /***/ },

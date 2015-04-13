@@ -6589,9 +6589,11 @@ body {
   border: none;
   }
 .navbar-top .container-g4p {
+  height: 50px;
   padding-left: 3em;
   font-size: 22px;
   line-height: 18px;
+  line-height: 50px;
   background-color: #555;
   }
 .navbar-top .container-g4p .navbar-brand-g4p {
