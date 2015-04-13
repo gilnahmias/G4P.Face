@@ -10,6 +10,7 @@ var Experiment = {
         }
     },
     question: {
+        loading: "Loading...",
         spaceToStart: "Space to start...",
         thankYou: [
             "Great! Try the next one",

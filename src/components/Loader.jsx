@@ -5,20 +5,13 @@
 'use strict';
 
 var React = require('react');
-
-var style = {
-    position: 'absolute',
-    zIndex: 10,
-    fontSize: 50,
-    top: 210,
-    left: '35%'
-};
+var Strings = require('../strings/Experiment-en').question;
 
 var Loader = React.createClass({
     render() {
         return (
-            <div style={style}>
-                Loading...
+            <div className="loading">
+                {Strings.loading}
             </div>
             );
     }
